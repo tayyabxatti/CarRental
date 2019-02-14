@@ -191,6 +191,12 @@
                             <!--DATE IN-->
                             <TextBlock Grid.Column="4" Grid.Row="4" Text="DATE DROP"/>
                             <TextBox Grid.Column="5" Grid.Row="4"/>
+                            <!--BASIC CHARGES-->
+                            <TextBlock Grid.Row="5" Grid.Column="0" Text="BASIC CHARGES" />
+                            <TextBox Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="3" />
+                            <TextBox Grid.Column="4" Grid.Row="5"/>
+                            <TextBox Grid.Column="5" Grid.Row="5"/>
+                            
                         </Grid>
                     </Border>
                 </Grid>
