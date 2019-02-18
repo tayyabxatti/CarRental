@@ -35,7 +35,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Mvvm, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mvvm.1.0.4\lib\Mvvm.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,8 +68,24 @@
     <Compile Include="Invoice.xaml.cs">
       <DependentUpon>Invoice.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\BasicCharges.cs" />
+    <Compile Include="Model\Car.cs" />
+    <Compile Include="Model\Client.cs" />
+    <Compile Include="Model\Company.cs" />
+    <Compile Include="Model\Driver.cs" />
+    <Compile Include="Model\RentalAgreement.cs" />
+    <Compile Include="Model\RentDb.cs" />
+    <Compile Include="Model\Reservation.cs" />
     <Compile Include="Vehicle.xaml.cs">
       <DependentUpon>Vehicle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\RentViewModel.cs" />
+    <Compile Include="ViewModel\ReservationViewModel.cs" />
+    <Compile Include="View\RentalAgreement.xaml.cs">
+      <DependentUpon>RentalAgreement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Reservation.xaml.cs">
+      <DependentUpon>Reservation.xaml</DependentUpon>
     </Compile>
     <Page Include="Invoice.xaml">
       <SubType>Designer</SubType>
@@ -78,6 +104,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Vehicle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\RentalAgreement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Reservation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -100,6 +134,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -108,5 +143,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
