@@ -16,13 +16,18 @@ using System.Windows.Shapes;
 namespace CarRent.View
 {
     /// <summary>
-    /// Interaction logic for Reservation.xaml
+    /// Interaction logic for Reserve.xaml
     /// </summary>
-    public partial class Reservation : UserControl
+    public partial class Reserve : UserControl
     {
-        public Reservation()
+        public Reserve()
         {
             InitializeComponent();
+        }
+
+        private void BtnInsert_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
