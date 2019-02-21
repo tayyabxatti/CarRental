@@ -31,5 +31,11 @@ namespace CarRent.View
             VehicleGrid.ItemsSource = _db.Cars.ToList();
             dataGrid = VehicleGrid;
         }
+
+        private void BtnInsert_Click(object sender, RoutedEventArgs e)
+        {
+            AddCar addCar = new AddCar();
+            addCar.ShowDialog();
+        }
     }
 }
