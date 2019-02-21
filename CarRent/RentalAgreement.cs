@@ -17,11 +17,9 @@ namespace CarRent
         public int RentalAgreementId { get; set; }
         public string AcutalItinerary { get; set; }
         public Nullable<int> BasicChargesId { get; set; }
-        public Nullable<int> CarId { get; set; }
         public Nullable<int> ReservationId { get; set; }
     
         public virtual BasicCharge BasicCharge { get; set; }
-        public virtual Car Car { get; set; }
         public virtual Reservation Reservation { get; set; }
     }
 }

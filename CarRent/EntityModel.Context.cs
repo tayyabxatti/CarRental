@@ -27,9 +27,6 @@ namespace CarRent
     
         public virtual DbSet<BasicCharge> BasicCharges { get; set; }
         public virtual DbSet<Car> Cars { get; set; }
-        public virtual DbSet<Client> Clients { get; set; }
-        public virtual DbSet<Company> Companies { get; set; }
-        public virtual DbSet<Driver> Drivers { get; set; }
         public virtual DbSet<RentalAgreement> RentalAgreements { get; set; }
         public virtual DbSet<Reservation> Reservations { get; set; }
     }

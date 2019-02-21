@@ -74,8 +74,8 @@
         <TextBox x:Name = "tbCheckInStation" Grid.Column="2" Grid.ColumnSpan="5" Grid.Row="5" />
         <!--CHECK IN DATE TIME-->
         <TextBlock Grid.Column="1" Grid.Row="6" Text="CHECK OUT TIME/DATE" />
-        <DatePicker x:Name = "tbCheckInDate" Grid.Column="2" Grid.Row="6" />
-        <TextBox x:Name = "tbCheckInTime" Grid.Column="3" Grid.ColumnSpan="4" Grid.Row="6" />
+        <DatePicker x:Name = "tbCheckOutDate" Grid.Column="2" Grid.Row="6" />
+        <TextBox x:Name = "tbCheckOutTime" Grid.Column="3" Grid.ColumnSpan="4" Grid.Row="6" />
         <!--RENTER'S NAME-->
         <TextBlock Grid.Column="1" Grid.Row="7" Text="RENTER'S NAME" />
         <TextBox x:Name = "tbRentersName" Grid.Column="2" Grid.ColumnSpan="5" Grid.Row="7" />

@@ -9,11 +9,12 @@
         Title="MainWindow" Height="500" Width="800">
     <StackPanel>
         <TabControl>
-            <TabItem Header="Vehicles" Margin="-2,-2,0,0">
-
-            </TabItem>
+           
             <TabItem Header="Reservation">
                 <vw:Reserve/>
+            </TabItem>
+            <TabItem Header="Vehicles" Margin="-2,-2,0,0">
+                <vw:Vehicle />
             </TabItem>
             <TabItem Header="Rental Agreement">
                 <vw:RentalAgreement/>
