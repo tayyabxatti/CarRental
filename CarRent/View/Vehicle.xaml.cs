@@ -37,5 +37,10 @@ namespace CarRent.View
             AddCar addCar = new AddCar();
             addCar.ShowDialog();
         }
+
+        private void BtnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

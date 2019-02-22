@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Xceed.Wpf.Toolkit;
 
 namespace CarRent.View
 {
@@ -28,9 +29,10 @@ namespace CarRent.View
         private void BtnInsert_Click(object sender, RoutedEventArgs e)
         {
             var totalKm = Int32.Parse(tbCarKmIn.Text) - Int32.Parse(tbCarKmOut.Text);
-            var totalTime = DateTime.Parse(tbTImeIn.Text) - DateTime.Parse(tbTimeOut.Text);
+            var totalTime = tbTImeIn.Value - tbTimeOut.Value;
             Car car = new Car()
             {
+                CarId = 12,
                 CarFuelState = tbCarFuelState.Text,
                 CarKmIn = Int32.Parse(tbCarKmIn.Text),
                 CarKmOut = Int32.Parse(tbCarKmOut.Text),
@@ -41,14 +43,17 @@ namespace CarRent.View
                 DateOut = tbDateOut.SelectedDate,
                 DriverName = tbDriverName.Text,
                 KmBill = Int32.Parse(tbKmBill.Text),
-                TImeIn = DateTime.Parse(tbTImeIn.Text),
-                TimeOut = DateTime.Parse(tbTimeOut.Text),
+                TImeIn = tbTImeIn.Value,
+                TimeOut = tbTimeOut.Value,
                 TimeBill = Int32.Parse(tbTimeBill.Text),
                 TotalKm = totalKm,
-                
+                TotalTime = DateTime.Parse(totalTime.ToString()),
             };
             _db.Cars.Add(car);
             _db.SaveChanges();
+            Vehicle.dataGrid.ItemsSource = _db.Cars.ToList();
+            this.Hide();
+
         }
     }
 }

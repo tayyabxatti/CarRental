@@ -36,7 +36,7 @@
             </DataGrid>
             <StackPanel Grid.Row="1" Orientation="Horizontal">
                 <Button x:Name="btnInsert" Content="Add a car" Margin="0,0,0,166" Width="176" Click="BtnInsert_Click" />
-                <Button x:Name="btnUpdate" Content="Update" Margin="0,0,0,166" Width="140" />
+                <Button x:Name="btnUpdate" Content="Update" Margin="0,0,0,166" Width="140" Click="BtnUpdate_Click" />
                 <Button x:Name="btnDelete" Content="Delete" Margin="0,0,0,166" Width="124" />
 
             </StackPanel>

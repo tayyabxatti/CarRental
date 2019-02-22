@@ -19,7 +19,6 @@ namespace CarRent
         {
             this.Reservations = new HashSet<Reservation>();
         }
-    
         public int CarId { get; set; }
         public string CarMake { get; set; }
         public string CarRegistrationNo { get; set; }
