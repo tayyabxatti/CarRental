@@ -18,7 +18,7 @@ namespace CarRent.View
     /// <summary>
     /// Interaction logic for Reserve.xaml
     /// </summary>
-    public partial class Reserve : UserControl
+    public partial class Reserve : Window
     {
         carRentEntities _db = new carRentEntities();
         public Reserve()
@@ -34,9 +34,10 @@ namespace CarRent.View
                 meth = "Cash";
             }
             else { meth = "Credit"; }
-            
+
             Car car = new Car()
             {
+               
                 CarMake = tbCarMake.Text,
                 CarRegistrationNo = tbCarRegistrationNo.Text,
                 DriverName = tbDriverName.Text,

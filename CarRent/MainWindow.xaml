@@ -10,13 +10,13 @@
     <StackPanel>
         <TabControl>
             <TabItem Header="Reservation">
-                <vw:Reserve />
+                <vw:ReservationList />
             </TabItem>
             <TabItem Header="Vehicles">
                 <vw:Vehicle/>
             </TabItem>
             <TabItem Header="Rental Agreement">
-                <vw:RentalAgreement/>
+                <!--<vw:RentalAgreement/>-->
             </TabItem>
 
         </TabControl>

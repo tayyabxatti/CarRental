@@ -32,7 +32,7 @@ namespace CarRent.View
             var totalTime = tbTImeIn.Value - tbTimeOut.Value;
             Car car = new Car()
             {
-                CarId = 12,
+                
                 CarFuelState = tbCarFuelState.Text,
                 CarKmIn = Int32.Parse(tbCarKmIn.Text),
                 CarKmOut = Int32.Parse(tbCarKmOut.Text),

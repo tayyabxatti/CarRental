@@ -112,20 +112,23 @@
     <Compile Include="Reservation.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Vehicle.xaml.cs">
-      <DependentUpon>Vehicle.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\AddCar.xaml.cs">
       <DependentUpon>AddCar.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\RentalAgreement.xaml.cs">
       <DependentUpon>RentalAgreement.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ReservationList.xaml.cs">
+      <DependentUpon>ReservationList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Reserve.xaml.cs">
       <DependentUpon>Reserve.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UpdateCar.xaml.cs">
       <DependentUpon>UpdateCar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UpdateReservation.xaml.cs">
+      <DependentUpon>UpdateReservation.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Vehicle.xaml.cs">
       <DependentUpon>Vehicle.xaml</DependentUpon>
@@ -146,10 +149,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Vehicle.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\AddCar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -158,11 +157,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ReservationList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Reserve.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UpdateCar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UpdateReservation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

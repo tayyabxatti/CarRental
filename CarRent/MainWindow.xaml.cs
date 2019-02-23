@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace CarRent
 {
     /// <summary>
@@ -22,7 +23,7 @@ namespace CarRent
     {
         public MainWindow()
         {
-            InitializeComponent();
+          InitializeComponent();
         }
 
         

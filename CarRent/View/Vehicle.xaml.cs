@@ -25,6 +25,7 @@ namespace CarRent.View
         {
             InitializeComponent();
             Load();
+            
         }
         private void Load()
         {
@@ -40,7 +41,20 @@ namespace CarRent.View
 
         private void BtnUpdate_Click(object sender, RoutedEventArgs e)
         {
+            int Id = (VehicleGrid.SelectedItem as Car).CarId;
+            UpdateCar updateCar = new UpdateCar(Id);
+            updateCar.ShowDialog();
+        }
 
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            int Id = (VehicleGrid.SelectedItem as Car).CarId;
+            var deleteCar = _db.Cars.Where(c => c.CarId == Id).SingleOrDefault();
+            var deleteReservation = _db.Reservations.Where(c => c.CarId == Id).SingleOrDefault();
+            _db.Cars.Remove(deleteCar);
+            _db.Reservations.Remove(deleteReservation);
+            _db.SaveChanges();
+            VehicleGrid.ItemsSource = _db.Cars.ToList();
         }
     }
 }

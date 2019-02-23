@@ -11,9 +11,11 @@ namespace CarRent
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class RentalAgreement
     {
+        [Key]
         public int RentalAgreementId { get; set; }
         public string AcutalItinerary { get; set; }
         public Nullable<int> BasicChargesId { get; set; }

@@ -15,29 +15,25 @@ using System.Windows.Shapes;
 namespace CarRent.View
 {
     /// <summary>
-    /// Interaction logic for UpdateCar.xaml
+    /// Interaction logic for UpdateReservation.xaml
     /// </summary>
-    public partial class UpdateCar : Window
+    public partial class UpdateReservation : Window
     {
         carRentEntities _db = new carRentEntities();
         int Id;
-        public UpdateCar(int CarId)
+        public UpdateReservation(int ReservationId)
         {
             InitializeComponent();
-            Id = CarId;
+            Id = ReservationId;
         }
 
         private void BtnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            Car updateCar = (from c in _db.Cars where c.CarId == Id select c).SingleOrDefault();
-            tbCarFuelState.Text = updateCar.CarFuelState;
-            tbCarKmIn.Text = updateCar.CarKmIn.ToString();
-            tbCarKmOut.Text = updateCar.TimeOut.ToString();
-            tbCarMake.Text = updateCar.CarMake;
-            tbCarRegistrationNo.Text = updateCar.CarRegistrationNo;
-            tbCompanyName.Text = updateCar.CompanyName;
+            Reservation updateReservation = (from r in _db.Reservations where r.ReservationId == Id select r).SingleOrDefault();
+            tbBillingAddress.Text = updateReservation.BillingAddress;
+            tbBookedAtDATE.Text = updateReservation.BookedAt.ToString();
             _db.SaveChanges();
-            Vehicle.dataGrid.ItemsSource = _db.Cars.ToList();
+            ReservationList.dataGrid.ItemsSource = _db.Reservations.ToList();
             this.Hide();
         }
     }

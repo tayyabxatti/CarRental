@@ -16,7 +16,7 @@ namespace CarRent
     public partial class carRentEntities : DbContext
     {
         public carRentEntities()
-            : base("name=carRentEntities")
+            : base("carRentEntities")
         {
         }
     
