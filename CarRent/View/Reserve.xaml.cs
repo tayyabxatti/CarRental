@@ -58,6 +58,7 @@ namespace CarRent.View
                 ReservationDateTime = tbReservationDate.SelectedDate,
                 StaffName =tbStaffName.Text,
                 RentingStation= tbRentingStation.Text,
+                
             };
             _db.Cars.Add(car);
             _db.SaveChanges();

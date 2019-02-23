@@ -46,7 +46,6 @@
         <TextBlock Grid.Column="0" Grid.Row="8" Text="8"/>
         <TextBlock Grid.Column="0" Grid.Row="9" Text="9"/>
         <TextBlock Grid.Column="0" Grid.Row="10" Text="10"/>
-        <TextBlock Grid.Column="0" Grid.Row="11" Text="11"/>
         <TextBlock Grid.Column="0" Grid.Row="12" Text="12"/>
         <TextBlock Grid.Column="0" Grid.Row="13" Text="13"/>
         <TextBlock Grid.Column="0" Grid.Row="14" Text="14"/>
@@ -56,8 +55,7 @@
         <TextBox x:Name = "tbRentingStation" Grid.Column="2" Grid.ColumnSpan="5" Grid.Row="1" />
         <!--CHECK OUT DATE TIME-->
         <TextBlock Grid.Column="1" Grid.Row="2" Text="BOOKED AT TIME/DATE" />
-        <DatePicker x:Name = "tbBookedAtDATE" Grid.Column="2" Grid.Row="2" />
-        <TextBox x:Name = "tbBookedAtTime" Grid.Column="3" Grid.ColumnSpan="4" Grid.Row="2" />
+        <DatePicker x:Name = "tbBookedAtDATE" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="5" />
         <!--AIRPLANE & FLIGHT NO-->
         <TextBlock Grid.Column="1" Grid.Row="3" Text="AIRPLANE AND FLIGHT NO" />
         <TextBox x:Name = "tbFlightNo" Grid.Column="2" Grid.ColumnSpan="5" Grid.Row="3" />
@@ -74,8 +72,7 @@
         <TextBox x:Name = "tbCheckInStation" Grid.Column="2" Grid.ColumnSpan="5" Grid.Row="5" />
         <!--CHECK IN DATE TIME-->
         <TextBlock Grid.Column="1" Grid.Row="6" Text="CHECK OUT TIME/DATE" />
-        <DatePicker x:Name = "tbCheckOutDate" Grid.Column="2" Grid.Row="6" />
-        <TextBox x:Name = "tbCheckOutTime" Grid.Column="3" Grid.ColumnSpan="4" Grid.Row="6" />
+        <DatePicker x:Name = "tbCheckOutDate" Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="5" />
         <!--RENTER'S NAME-->
         <TextBlock Grid.Column="1" Grid.Row="7" Text="RENTER'S NAME" />
         <TextBox x:Name = "tbRentersName" Grid.Column="2" Grid.ColumnSpan="5" Grid.Row="7" />
@@ -97,9 +94,7 @@
         <TextBox x:Name = "tbTelephoneContact" Grid.Column="2" Grid.ColumnSpan="4" Grid.Row="13" />
         <!--RESERVATION TIME AND DATE-->
         <TextBlock Grid.Column="1" Grid.Row="14" Text="RESERVATION TIME AND DATE" />
-        <DatePicker Grid.Column="2" Grid.Row="14" x:Name = "tbReservationDate"/>
-        <TextBox Grid.Column="3" Grid.Row="14" TextWrapping="Wrap" Text="TIME" x:Name = "tbReservationTime"/>
-        <TextBox Grid.Column="4" Grid.ColumnSpan="3" Grid.Row="14" TextWrapping="Wrap" Text="AIRPORT DROP"/>
+        <DatePicker Grid.Column="2" Grid.Row="14" x:Name = "tbReservationDate" Grid.ColumnSpan="5"/>
         <!--STAFF NAME-->
         <TextBlock Grid.Column="1" Grid.Row="15" Text="STAFF NAME"/>
         <TextBox x:Name = "tbStaffName" Grid.Column="2" Grid.ColumnSpan="5" Grid.Row="15" />

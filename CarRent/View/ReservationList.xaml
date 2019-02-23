@@ -14,21 +14,20 @@
             </Grid.RowDefinitions>
             <DataGrid x:Name="ReservationGrid" x:FieldModifier="public" IsReadOnly="True" AutoGenerateColumns="False"  Grid.Row="0" ColumnWidth="*">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="CarId" Binding="{Binding ReservationId}" />
-                    <DataGridTextColumn Header="CarMake" Binding="{Binding RentingStation}"/>
-                    <DataGridTextColumn Header="CarRegistrationNo" Binding="{Binding }"/>
-                    <DataGridTextColumn Header="CarFuelState" Binding="{Binding CheckOut}"/>
-                    <DataGridTextColumn Header="CarKmOut" Binding="{Binding MethodOfPayment}"/>
-                    <DataGridTextColumn Header="CarKmIn" Binding="{Binding BillingAddress}"/>
-                    <DataGridTextColumn Header="TotalKm" Binding="{Binding Source}"/>
-                    <DataGridTextColumn Header="KmBill" Binding="{Binding ReservationDateTime}"/>
-                    <DataGridTextColumn Header="TimeOut" Binding="{Binding StaffName}"/>
-                    <DataGridTextColumn Header="TImeIn" Binding="{Binding BookedAt}"/>
-                    <DataGridTextColumn Header="TimeBill" Binding="{Binding CarId}"/>
-                    <DataGridTextColumn Header="TotalTime" Binding="{Binding ClientName}"/>
-                    <DataGridTextColumn Header="DateOut" Binding="{Binding ClientFlightNo}"/>
-                    <DataGridTextColumn Header="DateIn" Binding="{Binding ClientPickUpAddress}"/>
-                    <DataGridTextColumn Header="DriverName" Binding="{Binding ClientContactNo}"/>
+                    <DataGridTextColumn Header="ReservationId" Binding="{Binding ReservationId}" />
+                    <DataGridTextColumn Header="RentingStation" Binding="{Binding RentingStation}"/>
+                    <DataGridTextColumn Header="CheckOut" Binding="{Binding CheckOut}"/>
+                    <DataGridTextColumn Header="MethodOfPayment" Binding="{Binding MethodOfPayment}"/>
+                    <DataGridTextColumn Header="BillingAddress" Binding="{Binding BillingAddress}"/>
+                    <DataGridTextColumn Header="Source" Binding="{Binding Source}"/>
+                    <DataGridTextColumn Header="ReservationDateTime" Binding="{Binding ReservationDateTime}"/>
+                    <DataGridTextColumn Header="StaffName" Binding="{Binding StaffName}"/>
+                    <DataGridTextColumn Header="BookedAt" Binding="{Binding BookedAt}"/>
+                    <DataGridTextColumn Header="CarId" Binding="{Binding CarId}"/>
+                    <DataGridTextColumn Header="ClientName" Binding="{Binding ClientName}"/>
+                    <DataGridTextColumn Header="ClientFlightNo" Binding="{Binding ClientFlightNo}"/>
+                    <DataGridTextColumn Header="ClientPickUpAddress" Binding="{Binding ClientPickUpAddress}"/>
+                    <DataGridTextColumn Header="ClientContactNo" Binding="{Binding ClientContactNo}"/>
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.HeaderTemplate>
                             <DataTemplate>
