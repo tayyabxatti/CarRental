@@ -35,7 +35,7 @@ namespace CarRent.View
             tbCarKmOut.Text = updateCar.TimeOut.ToString();
             tbCarMake.Text = updateCar.CarMake;
             tbCarRegistrationNo.Text = updateCar.CarRegistrationNo;
-            tbCompanyName.Text = updateCar.CompanyName;
+            tbCompanyName.Text = updateCar.Company.CompanyName;
             _db.SaveChanges();
             Vehicle.dataGrid.ItemsSource = _db.Cars.ToList();
             this.Hide();

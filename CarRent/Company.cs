@@ -12,25 +12,18 @@ namespace CarRent
     using System;
     using System.Collections.Generic;
     
-    public partial class BasicCharge
+    public partial class Company
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public BasicCharge()
+        public Company()
         {
-            this.RentalAgreements = new HashSet<RentalAgreement>();
+            this.Cars = new HashSet<Car>();
         }
     
-        public int BasicChargesId { get; set; }
-        public Nullable<int> HPkr { get; set; }
-        public Nullable<int> KPkr { get; set; }
-        public Nullable<int> DPkr { get; set; }
-        public Nullable<int> TollTaxCharges { get; set; }
-        public Nullable<int> DamageIfAny { get; set; }
-        public Nullable<int> GST { get; set; }
-        public Nullable<int> DriverCharges { get; set; }
-        public Nullable<int> TotalCharges { get; set; }
+        public int CompanyId { get; set; }
+        public string CompanyName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RentalAgreement> RentalAgreements { get; set; }
+        public virtual ICollection<Car> Cars { get; set; }
     }
 }

@@ -38,7 +38,14 @@ namespace CarRent.View
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-
+            int Id = (ReservationGrid.SelectedItem as Reservation).ReservationId;
+            var deleteReservation = _db.Reservations.Where(c => c.ReservationId == Id).SingleOrDefault();
+            var deleteCar = _db.Cars.Where(c => c.CarId == deleteReservation.CarId).SingleOrDefault();
+            _db.Cars.Remove(deleteCar);
+            _db.SaveChanges();
+            _db.Reservations.Remove(deleteReservation);
+            _db.SaveChanges();
+            ReservationGrid.ItemsSource = _db.Cars.ToList();
         }
 
         private void BtnUpdate_Click(object sender, RoutedEventArgs e)

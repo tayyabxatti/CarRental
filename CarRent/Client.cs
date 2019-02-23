@@ -12,25 +12,22 @@ namespace CarRent
     using System;
     using System.Collections.Generic;
     
-    public partial class BasicCharge
+    public partial class Client
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public BasicCharge()
+        public Client()
         {
-            this.RentalAgreements = new HashSet<RentalAgreement>();
+            this.Reservations = new HashSet<Reservation>();
         }
     
-        public int BasicChargesId { get; set; }
-        public Nullable<int> HPkr { get; set; }
-        public Nullable<int> KPkr { get; set; }
-        public Nullable<int> DPkr { get; set; }
-        public Nullable<int> TollTaxCharges { get; set; }
-        public Nullable<int> DamageIfAny { get; set; }
-        public Nullable<int> GST { get; set; }
-        public Nullable<int> DriverCharges { get; set; }
-        public Nullable<int> TotalCharges { get; set; }
+        public int ClientId { get; set; }
+        public string ClientName { get; set; }
+        public string ClientFlightNo { get; set; }
+        public string ClientPickUpAddress { get; set; }
+        public string ClientContactNo { get; set; }
+        public string ClientCompanyName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RentalAgreement> RentalAgreements { get; set; }
+        public virtual ICollection<Reservation> Reservations { get; set; }
     }
 }
