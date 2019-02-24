@@ -58,52 +58,37 @@ namespace CarRent.View
                 cbMethodOfPaymentCredit.IsChecked = true;
             }
         }
+
         private void BtnUpdate_Click(object sender, RoutedEventArgs e)
         {
+            Reservation updateReservation = (from r in _db.Reservations where r.ReservationId == Id select r).SingleOrDefault();
+            Client updateClient = (from c in _db.Clients where c.ClientId == updateReservation.ClientId select c).SingleOrDefault();
+            Driver updateDriver = (from d in _db.Drivers where d.DriverId == updateReservation.ReservationId select d).SingleOrDefault();
+            Car updateCar = (from c in _db.Cars where c.CarId == updateReservation.CarId select c).SingleOrDefault();
             string meth;
             if (cbMethodOfPaymentCash.IsChecked == true)
             {
                 meth = "Cash";
             }
             else { meth = "Credit"; }
-            Driver driver = new Driver()
-            {
-                DriverName = tbDriverName.Text,
-            };
-            _db.Drivers.Add(driver);
+            updateDriver.DriverName = tbDriverName.Text,
             _db.SaveChanges();
-
-            Car car = new Car()
-            {
-                CarMake = tbCarMake.Text,
-                CarRegistrationNo = tbCarRegistrationNo.Text,
-            };
-            _db.Cars.Add(car);
+            updateCar.CarMake = tbCarMake.Text;
+            updateCar.CarRegistrationNo = tbCarRegistrationNo.Text;
             _db.SaveChanges();
-            Client client = new Client()
-            {
-                ClientName = tbRentersName.Text,
-                ClientContactNo = tbTelephoneContact.Text,
-                ClientFlightNo = tbFlightNo.Text,
-                ClientPickUpAddress = tbPickupAddress.Text,
-            };
-            _db.Clients.Add(client);
+            updateClient.ClientName = tbRentersName.Text;
+            updateClient.ClientContactNo = tbTelephoneContact.Text;
+            updateClient.ClientFlightNo = tbFlightNo.Text;
+            updateClient.ClientPickUpAddress = tbPickupAddress.Text;
             _db.SaveChanges();
-            Reservation reservation = new Reservation()
-            {
-
-                BillingAddress = tbBillingAddress.Text,
-                BookedAt = tbBookedAtDATE.SelectedDate,
-                CarId = car.CarId,
-                MethodOfPayment = meth,
-                Source = tbSource.Text,
-                ReservationDateTime = tbReservationDate.SelectedDate,
-                StaffName = tbStaffName.Text,
-                RentingStation = tbRentingStation.Text,
-            };
-            _db.Reservations.Add(reservation);
+            updateReservation.BillingAddress = tbBillingAddress.Text;
+             updateReservation.BookedAt = tbBookedAtDATE.SelectedDate;
+             updateReservation.MethodOfPayment = meth;
+             updateReservation.Source = tbSource.Text;
+             updateReservation.ReservationDateTime = tbReservationDate.SelectedDate;
+             updateReservation.StaffName = tbStaffName.Text;
+             updateReservation.RentingStation = tbRentingStation.Text;
             _db.SaveChanges();
-
             ReservationList.dataGrid.ItemsSource = _db.Reservations.ToList();
             this.Hide();
         }
