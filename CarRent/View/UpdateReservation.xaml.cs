@@ -71,7 +71,7 @@ namespace CarRent.View
                 meth = "Cash";
             }
             else { meth = "Credit"; }
-            updateDriver.DriverName = tbDriverName.Text,
+            updateDriver.DriverName = tbDriverName.Text;
             _db.SaveChanges();
             updateCar.CarMake = tbCarMake.Text;
             updateCar.CarRegistrationNo = tbCarRegistrationNo.Text;
