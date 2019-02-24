@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:CarRent.View"
         mc:Ignorable="d"
         Title="AddCar" Height="450" Width="800">
-    <StackPanel>
+    
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -79,5 +79,5 @@
             <!--Add Button-->
             <Button x:Name="btnInsert" Grid.Row="15" Content="Add car" Click="BtnInsert_Click" Grid.ColumnSpan="2" Margin="203,5,193,-5" />
         </Grid>
-    </StackPanel>
+    
 </Window>

@@ -124,6 +124,12 @@
     <Compile Include="View\AddCar.xaml.cs">
       <DependentUpon>AddCar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\AddDriver.xaml.cs">
+      <DependentUpon>AddDriver.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DriverMenu.xaml.cs">
+      <DependentUpon>DriverMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\RentalAgreement.xaml.cs">
       <DependentUpon>RentalAgreement.xaml</DependentUpon>
     </Compile>
@@ -135,6 +141,9 @@
     </Compile>
     <Compile Include="View\UpdateCar.xaml.cs">
       <DependentUpon>UpdateCar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UpdateDriver.xaml.cs">
+      <DependentUpon>UpdateDriver.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UpdateReservation.xaml.cs">
       <DependentUpon>UpdateReservation.xaml</DependentUpon>
@@ -162,6 +171,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\AddDriver.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DriverMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\RentalAgreement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -175,6 +192,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UpdateCar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UpdateDriver.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

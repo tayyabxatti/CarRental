@@ -27,6 +27,7 @@ namespace CarRent.View
             Load();
             
         }
+        
         private void Load()
         {
             VehicleGrid.ItemsSource = _db.Cars.ToList();

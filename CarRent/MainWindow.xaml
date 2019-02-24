@@ -18,7 +18,9 @@
             <TabItem Header="Rental Agreement">
                 <!--<vw:RentalAgreement/>-->
             </TabItem>
-
+            <TabItem Header="Driver">
+                <vw:DriverMenu/>
+            </TabItem>
         </TabControl>
     </StackPanel>
 </Window>
