@@ -45,9 +45,7 @@ namespace CarRent.View
         {
             int Id = (DriverGrid.SelectedItem as Driver).DriverId;
             var deleteDriver = _db.Drivers.Where(c => c.DriverId == Id).SingleOrDefault();
-            var deleteCars = _db.Cars.Where(c => c.DriverId == Id).SingleOrDefault();
             _db.Drivers.Remove(deleteDriver);
-            _db.Cars.Remove(deleteCars);
             _db.SaveChanges();
             DriverGrid.ItemsSource = _db.Drivers.ToList();
         }

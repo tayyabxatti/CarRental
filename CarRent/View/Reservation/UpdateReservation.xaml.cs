@@ -44,7 +44,7 @@ namespace CarRent.View
             tbRentingStation.Text = updateReservation.RentingStation;
             tbCarMake.Text = updateReservation.Car.CarMake;
             tbCarRegistrationNo.Text = updateReservation.Car.CarRegistrationNo;
-            tbDriverName.Text = updateReservation.Car.Driver.DriverName;
+            tbDriverName.Text = updateReservation.Driver.DriverName;
             tbRentersName.Text = updateReservation.Client.ClientName;
 
             //check in station and Renter's name remaining.

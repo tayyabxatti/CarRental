@@ -24,10 +24,10 @@
                     <DataGridTextColumn Header="StaffName" Binding="{Binding StaffName}"/>
                     <DataGridTextColumn Header="BookedAt" Binding="{Binding BookedAt}"/>
                     <DataGridTextColumn Header="CarId" Binding="{Binding CarId}"/>
+                    <DataGridTextColumn Header="CarMake" Binding="{Binding Car.CarMake}"/>
+                    <DataGridTextColumn Header="CarRegistrationNo" Binding="{Binding Car.CarRegistrationNo}"/>
                     <DataGridTextColumn Header="ClientName" Binding="{Binding ClientName}"/>
-                    <DataGridTextColumn Header="ClientFlightNo" Binding="{Binding ClientFlightNo}"/>
-                    <DataGridTextColumn Header="ClientPickUpAddress" Binding="{Binding ClientPickUpAddress}"/>
-                    <DataGridTextColumn Header="ClientContactNo" Binding="{Binding ClientContactNo}"/>
+                    
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.HeaderTemplate>
                             <DataTemplate>

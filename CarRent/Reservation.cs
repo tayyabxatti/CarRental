@@ -31,9 +31,11 @@ namespace CarRent
         public Nullable<int> CarId { get; set; }
         public Nullable<int> ClientId { get; set; }
         public string Note { get; set; }
+        public Nullable<int> DriverId { get; set; }
     
         public virtual Car Car { get; set; }
         public virtual Client Client { get; set; }
+        public virtual Driver Driver { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RentalAgreement> RentalAgreements { get; set; }
     }

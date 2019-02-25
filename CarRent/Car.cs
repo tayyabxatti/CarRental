@@ -34,11 +34,7 @@ namespace CarRent
         public Nullable<System.DateTime> TotalTime { get; set; }
         public Nullable<System.DateTime> DateOut { get; set; }
         public Nullable<System.DateTime> DateIn { get; set; }
-        public Nullable<int> DriverId { get; set; }
-        public Nullable<int> CompanyId { get; set; }
     
-        public virtual Company Company { get; set; }
-        public virtual Driver Driver { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Reservation> Reservations { get; set; }
     }

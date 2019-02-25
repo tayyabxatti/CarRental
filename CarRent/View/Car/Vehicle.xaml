@@ -15,7 +15,7 @@
             <DataGrid x:Name="VehicleGrid" x:FieldModifier="public" IsReadOnly="True" AutoGenerateColumns="False" SelectedItem="{Binding CarId}"  Grid.Row="0" ColumnWidth="*">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="CarId" Binding="{Binding CarId}" />
-                    <DataGridTextColumn Header="CarMake" Binding="{Binding CarMake, Mode=TwoWay}"/>
+                    <DataGridTextColumn Header="CarMake" Binding="{Binding CarMake }"/>
                     <DataGridTextColumn Header="CarRegistrationNo" Binding="{Binding CarRegistrationNo}"/>
                     <DataGridTextColumn Header="CarFuelState" Binding="{Binding CarFuelState}"/>
                     <DataGridTextColumn Header="CarKmOut" Binding="{Binding CarKmOut}"/>
@@ -28,8 +28,9 @@
                     <DataGridTextColumn Header="TotalTime" Binding="{Binding TotalTime}"/>
                     <DataGridTextColumn Header="DateOut" Binding="{Binding DateOut}"/>
                     <DataGridTextColumn Header="DateIn" Binding="{Binding DateIn}"/>
-                    <DataGridTextColumn Header="DriverName" Binding="{Binding DriverName}"/>
-                    <DataGridTextColumn Header="CompanyName" Binding="{Binding CompanyName}"/>
+                    <DataGridTextColumn Header="DriverId" Binding="{Binding DriverId}"/>
+                    <DataGridTextColumn Header="DriverName" Binding="{Binding Driver.DriverName}"/>
+                    <DataGridTextColumn Header="CompanyName" Binding="{Binding Company.CompanyName}"/>
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.HeaderTemplate>
                             <DataTemplate>

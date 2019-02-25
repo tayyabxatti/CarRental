@@ -30,6 +30,14 @@ namespace CarRent.View
         
         private void Load()
         {
+            //var veh = _db.Cars.ToList();
+            //foreach( var vehi in veh) {
+            //    var dveh = _db.Drivers.Where(x => x.DriverId == vehi.DriverId).SingleOrDefault();
+            //    var cveh = _db.Companies.Where(c => c.CompanyId == vehi.CompanyId).SingleOrDefault();
+            //    var vehicle = _db.Cars.Where(x => x.CompanyId == cveh.CompanyId && x.DriverId == dveh.DriverId).ToList();
+                
+            //}
+
             VehicleGrid.ItemsSource = _db.Cars.ToList();
             dataGrid = VehicleGrid;
         }

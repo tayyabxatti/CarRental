@@ -26,10 +26,10 @@ namespace CarRent.View
         public ReservationList()
         {
             InitializeComponent();
-            load();
+            Load();
         }
 
-        public void load()
+        public void Load()
         {
             ReservationGrid.ItemsSource = _db.Reservations.ToList();
             dataGrid = ReservationGrid;

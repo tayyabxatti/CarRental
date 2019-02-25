@@ -17,13 +17,13 @@ namespace CarRent
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Driver()
         {
-            this.Cars = new HashSet<Car>();
+            this.Reservations = new HashSet<Reservation>();
         }
     
         public int DriverId { get; set; }
         public string DriverName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Car> Cars { get; set; }
+        public virtual ICollection<Reservation> Reservations { get; set; }
     }
 }

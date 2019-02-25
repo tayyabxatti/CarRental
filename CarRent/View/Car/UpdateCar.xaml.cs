@@ -30,15 +30,6 @@ namespace CarRent.View
         public void Load()
         {
             var updateCar = (from c in _db.Cars where c.CarId == Id select c).SingleOrDefault();
-            var updateCompany = (from c in _db.Companies where c.CompanyId == updateCar.CompanyId select c).SingleOrDefault();
-            var updateDriver = (from d in _db.Drivers where d.DriverId == updateCar.DriverId select d).SingleOrDefault();
-            if (updateCompany.CompanyName != null)
-            {
-                tbCompanyName.Text = updateCompany.CompanyName;
-            }
-            if (updateDriver.DriverName !=null) {
-                tbDriverName.Text = updateDriver.DriverName;
-            }
               tbCarFuelState.Text =updateCar.CarFuelState;
                tbCarKmIn.Text = updateCar.CarKmIn.ToString(); 
                tbCarKmOut.Text =updateCar.CarKmOut.ToString();
@@ -63,7 +54,7 @@ namespace CarRent.View
             tbCarKmOut.Text = updateCar.TimeOut.ToString();
             tbCarMake.Text = updateCar.CarMake;
             tbCarRegistrationNo.Text = updateCar.CarRegistrationNo;
-            tbCompanyName.Text = updateCar.Company.CompanyName;
+            
             _db.SaveChanges();
             Vehicle.dataGrid.ItemsSource = _db.Cars.ToList();
             this.Hide();

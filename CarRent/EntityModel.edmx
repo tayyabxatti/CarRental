@@ -37,8 +37,6 @@
           <Property Name="TotalTime" Type="datetime" />
           <Property Name="DateOut" Type="datetime" />
           <Property Name="DateIn" Type="datetime" />
-          <Property Name="DriverId" Type="int" />
-          <Property Name="CompanyId" Type="int" />
         </EntityType>
         <EntityType Name="Client">
           <Key>
@@ -50,13 +48,6 @@
           <Property Name="ClientPickUpAddress" Type="varchar" MaxLength="50" />
           <Property Name="ClientContactNo" Type="varchar" MaxLength="50" />
           <Property Name="ClientCompanyName" Type="varchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="Company">
-          <Key>
-            <PropertyRef Name="CompanyId" />
-          </Key>
-          <Property Name="CompanyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CompanyName" Type="nchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="Driver">
           <Key>
@@ -89,31 +80,8 @@
           <Property Name="CarId" Type="int" />
           <Property Name="ClientId" Type="int" />
           <Property Name="Note" Type="varchar" MaxLength="50" />
+          <Property Name="DriverId" Type="int" />
         </EntityType>
-        <Association Name="FK_Car_Company">
-          <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
-          <End Role="Car" Type="Self.Car" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Company">
-              <PropertyRef Name="CompanyId" />
-            </Principal>
-            <Dependent Role="Car">
-              <PropertyRef Name="CompanyId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Car_Driver">
-          <End Role="Driver" Type="Self.Driver" Multiplicity="0..1" />
-          <End Role="Car" Type="Self.Car" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Driver">
-              <PropertyRef Name="DriverId" />
-            </Principal>
-            <Dependent Role="Car">
-              <PropertyRef Name="DriverId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_RentalAgreement_BasicCharges">
           <End Role="BasicCharges" Type="Self.BasicCharges" Multiplicity="0..1" />
           <End Role="RentalAgreement" Type="Self.RentalAgreement" Multiplicity="*" />
@@ -162,22 +130,25 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Reservation_Driver">
+          <End Role="Driver" Type="Self.Driver" Multiplicity="0..1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Driver">
+              <PropertyRef Name="DriverId" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="DriverId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="carRentModelStoreContainer">
           <EntitySet Name="BasicCharges" EntityType="Self.BasicCharges" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Car" EntityType="Self.Car" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Driver" EntityType="Self.Driver" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RentalAgreement" EntityType="Self.RentalAgreement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Car_Company" Association="Self.FK_Car_Company">
-            <End Role="Company" EntitySet="Company" />
-            <End Role="Car" EntitySet="Car" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Car_Driver" Association="Self.FK_Car_Driver">
-            <End Role="Driver" EntitySet="Driver" />
-            <End Role="Car" EntitySet="Car" />
-          </AssociationSet>
           <AssociationSet Name="FK_RentalAgreement_BasicCharges" Association="Self.FK_RentalAgreement_BasicCharges">
             <End Role="BasicCharges" EntitySet="BasicCharges" />
             <End Role="RentalAgreement" EntitySet="RentalAgreement" />
@@ -192,6 +163,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Reservation_Client" Association="Self.FK_Reservation_Client">
             <End Role="Client" EntitySet="Client" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reservation_Driver" Association="Self.FK_Reservation_Driver">
+            <End Role="Driver" EntitySet="Driver" />
             <End Role="Reservation" EntitySet="Reservation" />
           </AssociationSet>
         </EntityContainer>
@@ -233,10 +208,6 @@
           <Property Name="TotalTime" Type="DateTime" Precision="3" />
           <Property Name="DateOut" Type="DateTime" Precision="3" />
           <Property Name="DateIn" Type="DateTime" Precision="3" />
-          <Property Name="DriverId" Type="Int32" />
-          <Property Name="CompanyId" Type="Int32" />
-          <NavigationProperty Name="Company" Relationship="Self.FK_Car_Company" FromRole="Car" ToRole="Company" />
-          <NavigationProperty Name="Driver" Relationship="Self.FK_Car_Driver" FromRole="Car" ToRole="Driver" />
           <NavigationProperty Name="Reservations" Relationship="Self.FK_Reservation_Car" FromRole="Car" ToRole="Reservation" />
         </EntityType>
         <EntityType Name="Client">
@@ -251,21 +222,13 @@
           <Property Name="ClientCompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Reservations" Relationship="Self.FK_Reservation_Client" FromRole="Client" ToRole="Reservation" />
         </EntityType>
-        <EntityType Name="Company">
-          <Key>
-            <PropertyRef Name="CompanyId" />
-          </Key>
-          <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CompanyName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Cars" Relationship="Self.FK_Car_Company" FromRole="Company" ToRole="Car" />
-        </EntityType>
         <EntityType Name="Driver">
           <Key>
             <PropertyRef Name="DriverId" />
           </Key>
           <Property Name="DriverId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DriverName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Cars" Relationship="Self.FK_Car_Driver" FromRole="Driver" ToRole="Car" />
+          <NavigationProperty Name="Reservations" Relationship="Self.FK_Reservation_Driver" FromRole="Driver" ToRole="Reservation" />
         </EntityType>
         <EntityType Name="RentalAgreement">
           <Key>
@@ -293,8 +256,10 @@
           <Property Name="CarId" Type="Int32" />
           <Property Name="ClientId" Type="Int32" />
           <Property Name="Note" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DriverId" Type="Int32" />
           <NavigationProperty Name="Car" Relationship="Self.FK_Reservation_Car" FromRole="Reservation" ToRole="Car" />
           <NavigationProperty Name="Client" Relationship="Self.FK_Reservation_Client" FromRole="Reservation" ToRole="Client" />
+          <NavigationProperty Name="Driver" Relationship="Self.FK_Reservation_Driver" FromRole="Reservation" ToRole="Driver" />
           <NavigationProperty Name="RentalAgreements" Relationship="Self.FK_RentalAgreement_Reservation" FromRole="Reservation" ToRole="RentalAgreement" />
         </EntityType>
         <Association Name="FK_RentalAgreement_BasicCharges">
@@ -306,30 +271,6 @@
             </Principal>
             <Dependent Role="RentalAgreement">
               <PropertyRef Name="BasicChargesId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Car_Company">
-          <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
-          <End Role="Car" Type="Self.Car" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Company">
-              <PropertyRef Name="CompanyId" />
-            </Principal>
-            <Dependent Role="Car">
-              <PropertyRef Name="CompanyId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Car_Driver">
-          <End Role="Driver" Type="Self.Driver" Multiplicity="0..1" />
-          <End Role="Car" Type="Self.Car" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Driver">
-              <PropertyRef Name="DriverId" />
-            </Principal>
-            <Dependent Role="Car">
-              <PropertyRef Name="DriverId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -357,6 +298,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Reservation_Driver">
+          <End Role="Driver" Type="Self.Driver" Multiplicity="0..1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Driver">
+              <PropertyRef Name="DriverId" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="DriverId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_RentalAgreement_Reservation">
           <End Role="Reservation" Type="Self.Reservation" Multiplicity="0..1" />
           <End Role="RentalAgreement" Type="Self.RentalAgreement" Multiplicity="*" />
@@ -373,7 +326,6 @@
           <EntitySet Name="BasicCharges" EntityType="Self.BasicCharge" />
           <EntitySet Name="Cars" EntityType="Self.Car" />
           <EntitySet Name="Clients" EntityType="Self.Client" />
-          <EntitySet Name="Companies" EntityType="Self.Company" />
           <EntitySet Name="Drivers" EntityType="Self.Driver" />
           <EntitySet Name="RentalAgreements" EntityType="Self.RentalAgreement" />
           <EntitySet Name="Reservations" EntityType="Self.Reservation" />
@@ -381,20 +333,16 @@
             <End Role="BasicCharges" EntitySet="BasicCharges" />
             <End Role="RentalAgreement" EntitySet="RentalAgreements" />
           </AssociationSet>
-          <AssociationSet Name="FK_Car_Company" Association="Self.FK_Car_Company">
-            <End Role="Company" EntitySet="Companies" />
-            <End Role="Car" EntitySet="Cars" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Car_Driver" Association="Self.FK_Car_Driver">
-            <End Role="Driver" EntitySet="Drivers" />
-            <End Role="Car" EntitySet="Cars" />
-          </AssociationSet>
           <AssociationSet Name="FK_Reservation_Car" Association="Self.FK_Reservation_Car">
             <End Role="Car" EntitySet="Cars" />
             <End Role="Reservation" EntitySet="Reservations" />
           </AssociationSet>
           <AssociationSet Name="FK_Reservation_Client" Association="Self.FK_Reservation_Client">
             <End Role="Client" EntitySet="Clients" />
+            <End Role="Reservation" EntitySet="Reservations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reservation_Driver" Association="Self.FK_Reservation_Driver">
+            <End Role="Driver" EntitySet="Drivers" />
             <End Role="Reservation" EntitySet="Reservations" />
           </AssociationSet>
           <AssociationSet Name="FK_RentalAgreement_Reservation" Association="Self.FK_RentalAgreement_Reservation">
@@ -440,8 +388,6 @@
                 <ScalarProperty Name="TotalTime" ColumnName="TotalTime" />
                 <ScalarProperty Name="DateOut" ColumnName="DateOut" />
                 <ScalarProperty Name="DateIn" ColumnName="DateIn" />
-                <ScalarProperty Name="DriverId" ColumnName="DriverId" />
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -454,14 +400,6 @@
                 <ScalarProperty Name="ClientPickUpAddress" ColumnName="ClientPickUpAddress" />
                 <ScalarProperty Name="ClientContactNo" ColumnName="ClientContactNo" />
                 <ScalarProperty Name="ClientCompanyName" ColumnName="ClientCompanyName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Companies">
-            <EntityTypeMapping TypeName="carRentModel.Company">
-              <MappingFragment StoreEntitySet="Company">
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
-                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -497,6 +435,7 @@
                 <ScalarProperty Name="CarId" ColumnName="CarId" />
                 <ScalarProperty Name="ClientId" ColumnName="ClientId" />
                 <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="DriverId" ColumnName="DriverId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

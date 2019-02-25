@@ -91,9 +91,6 @@
     <Compile Include="Client.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Company.cs">
-      <DependentUpon>EntityModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Driver.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
@@ -121,34 +118,34 @@
     <Compile Include="Reservation.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="View\AddCar.xaml.cs">
+    <Compile Include="View\Car\AddCar.xaml.cs">
       <DependentUpon>AddCar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\AddDriver.xaml.cs">
+    <Compile Include="View\Driver\AddDriver.xaml.cs">
       <DependentUpon>AddDriver.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\DriverMenu.xaml.cs">
+    <Compile Include="View\Driver\DriverMenu.xaml.cs">
       <DependentUpon>DriverMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\RentalAgreement.xaml.cs">
       <DependentUpon>RentalAgreement.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ReservationList.xaml.cs">
+    <Compile Include="View\Reservation\ReservationList.xaml.cs">
       <DependentUpon>ReservationList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Reserve.xaml.cs">
+    <Compile Include="View\Reservation\Reserve.xaml.cs">
       <DependentUpon>Reserve.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UpdateCar.xaml.cs">
+    <Compile Include="View\Car\UpdateCar.xaml.cs">
       <DependentUpon>UpdateCar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UpdateDriver.xaml.cs">
+    <Compile Include="View\Driver\UpdateDriver.xaml.cs">
       <DependentUpon>UpdateDriver.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UpdateReservation.xaml.cs">
+    <Compile Include="View\Reservation\UpdateReservation.xaml.cs">
       <DependentUpon>UpdateReservation.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Vehicle.xaml.cs">
+    <Compile Include="View\Car\Vehicle.xaml.cs">
       <DependentUpon>Vehicle.xaml</DependentUpon>
     </Compile>
     <Page Include="Invoice.xaml">
@@ -167,15 +164,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\AddCar.xaml">
+    <Page Include="View\Car\AddCar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\AddDriver.xaml">
+    <Page Include="View\Driver\AddDriver.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\DriverMenu.xaml">
+    <Page Include="View\Driver\DriverMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -183,27 +180,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ReservationList.xaml">
+    <Page Include="View\Reservation\ReservationList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Reserve.xaml">
+    <Page Include="View\Reservation\Reserve.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UpdateCar.xaml">
+    <Page Include="View\Car\UpdateCar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UpdateDriver.xaml">
+    <Page Include="View\Driver\UpdateDriver.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UpdateReservation.xaml">
+    <Page Include="View\Reservation\UpdateReservation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Vehicle.xaml">
+    <Page Include="View\Car\Vehicle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

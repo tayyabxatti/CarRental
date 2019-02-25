@@ -30,19 +30,7 @@ namespace CarRent.View
         {
             var totalKm = Int32.Parse(tbCarKmIn.Text) - Int32.Parse(tbCarKmOut.Text);
             var totalTime = tbTImeIn.Value - tbTimeOut.Value;
-            Company company = new Company()
-            {
-                CompanyName = tbCompanyName.Text,
-            };
-            _db.Companies.Add(company);
-            _db.SaveChanges();
-            Driver driver = new Driver()
-            {
-                DriverName = tbDriverName.Text,
-
-            };
-            _db.Drivers.Add(driver);
-            _db.SaveChanges();
+            
             Car car = new Car()
             {
                 CarFuelState = tbCarFuelState.Text,
