@@ -11,7 +11,8 @@ namespace CarRent
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Reservation
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +20,7 @@ namespace CarRent
         {
             this.RentalAgreements = new HashSet<RentalAgreement>();
         }
-    
+        [Key]
         public int ReservationId { get; set; }
         public string RentingStation { get; set; }
         public string MethodOfPayment { get; set; }
@@ -32,6 +33,7 @@ namespace CarRent
         public Nullable<int> ClientId { get; set; }
         public string Note { get; set; }
         public Nullable<int> DriverId { get; set; }
+        public string CheckInStation { get; set; }
     
         public virtual Car Car { get; set; }
         public virtual Client Client { get; set; }

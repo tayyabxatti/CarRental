@@ -56,15 +56,12 @@
         <TextBox x:Name = "tbRentingStation" Grid.Column="2" Grid.ColumnSpan="5" Grid.Row="1" />
         <!--CHECK OUT DATE TIME-->
         <TextBlock Grid.Column="1" Grid.Row="2" Text="BOOKED AT TIME/DATE" />
-        <DatePicker x:Name = "tbBookedAtDATE" Grid.Column="2" Grid.Row="2" />
-        <xctk:TimePicker x:Name = "tbBookedAtTime" Grid.Column="3" Grid.ColumnSpan="4" Grid.Row="2"  />
+        <xctk:DateTimePicker x:Name = "tbBookedAtDATE" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="5" />
         <!--AIRPLANE & FLIGHT NO-->
         <TextBlock Grid.Column="1" Grid.Row="3" Text="AIRPLANE AND FLIGHT NO" />
         <TextBox x:Name = "tbFlightNo" Grid.Column="2" Grid.ColumnSpan="5" Grid.Row="3" />
-
         <!--CAR GROUP-->
         <TextBlock Grid.Column="1" Grid.Row="4" Text="CAR GROUP(MAKE,MODEL)" />
-
         <ComboBox x:Name="cbCarMake"  Grid.Column="2" Grid.Row="4" Text="CarMake" SelectionChanged="CbCarMake_SelectionChanged">
             <ComboBoxItem >CarMake : Registration No</ComboBoxItem>
         </ComboBox>
@@ -99,8 +96,9 @@
         <TextBox x:Name = "tbStaffName" Grid.Column="2" Grid.ColumnSpan="5" Grid.Row="13" />
         <!--NOTE-->
         <TextBlock Grid.Column="1" Grid.Row="14" Text="NOTE" />
+        
 
-        <TextBox x:Name = "tbCheckOutTime" Grid.Column="2" Grid.ColumnSpan="5" Grid.Row="14" Grid.RowSpan="2" />
+        <TextBox x:Name = "tbNote" Grid.Column="2" Grid.ColumnSpan="5" Grid.Row="14" Grid.RowSpan="2" />
 
         <!--Buttons-->
         <Button x:Name = "btnInsert" Grid.Row="17" Grid.Column="3" Content = "Make Reservation" Click="BtnInsert_Click" />

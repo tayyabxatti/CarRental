@@ -53,9 +53,6 @@ namespace CarRent.View
         {
             tbCarRegistrationNo.Text = cbCarMake.SelectedValue.ToString().Split(':')[1].Trim();
         }
-
-        
-
         private void CbSelfDrive_Checked(object sender, RoutedEventArgs e)
         {
             if (cbSelfDrive.IsChecked == true)
@@ -80,7 +77,6 @@ namespace CarRent.View
                 cbMethodOfPaymentCash.IsChecked = false;
             }
         }
-
         private void CbMethodOfPaymentCash_Checked(object sender, RoutedEventArgs e)
         {
             if (cbMethodOfPaymentCash.IsChecked == true)
@@ -88,28 +84,52 @@ namespace CarRent.View
                 cbMethodOfPaymentCredit.IsChecked = false;
             }
         }
-
-        
-
         private void BtnInsert_Click(object sender, RoutedEventArgs e)
-         {
-            string meth;
+        {
+            string meth="";
             if (cbMethodOfPaymentCash.IsChecked ==true )
             {
                 meth = "Cash";
             }
             else { meth = "Credit"; }
+
+            Client client = new Client()
+            {
+                ClientFlightNo = tbFlightNo.Text,
+                ClientPickUpAddress = tbPickupAddress.Text,
+                ClientContactNo = tbTelephoneContact.Text,
+                ClientName= cbRentersName.Text,
+            };
+            _db.SaveChanges();
+            Car car = new Car()
+            {
+                CarMake = cbCarMake.SelectedValue.ToString().Split(':')[0].Trim(),
+                CarRegistrationNo = tbCarRegistrationNo.Text,
+            };
+            var cid=_db.Clients.Where(c => c.ClientName == client.ClientName && c.ClientContactNo == client.ClientContactNo).Select(a => a.ClientId).SingleOrDefault();
+            var carid=_db.Cars.Where(c => c.CarMake == car.CarMake && c.CarRegistrationNo == tbCarRegistrationNo.Text).Select(f => f.CarId).SingleOrDefault();
+            var did=_db.Drivers.Where(x => x.DriverName == cbDriverName.Text).Select(f => f.DriverId).SingleOrDefault();
+            _db.SaveChanges();
             Reservation reservation = new Reservation()
             {
-
-                BillingAddress = tbBillingAddress.Text,
-                BookedAt = tbBookedAtDATE.SelectedDate,
-                CarId = _db.Cars.Where(c=> c.CarMake == cbCarMake.SelectedItem.ToString()).Select(x=> x.CarId).SingleOrDefault(),
+                RentingStation = tbRentingStation.Text,
+                BookedAt = DateTime.Parse(tbBookedAtDATE.Text),
+                //Client Airplane and Flight No
+                CarId = carid,
+                //Car Group Make and Model 
+                ClientId = cid,
+                //Driver Name
+                DriverId = did,
+                CheckInStation = tbCheckInStation.Text,
+                //Client Name , Pickup Address
                 MethodOfPayment = meth,
+                BillingAddress = tbBillingAddress.Text,
                 Source = tbSource.Text,
+                //Client Telephone contact
+                StaffName = tbStaffName.Text,
+                Note = tbNote.Text,
                 ReservationDateTime = DateTime.Now,
-                StaffName =tbStaffName.Text,
-                RentingStation= tbRentingStation.Text,                
+                
             };
             _db.Reservations.Add(reservation);
             _db.SaveChanges();

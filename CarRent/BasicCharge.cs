@@ -11,7 +11,8 @@ namespace CarRent
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class BasicCharge
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +20,7 @@ namespace CarRent
         {
             this.RentalAgreements = new HashSet<RentalAgreement>();
         }
-    
+        [Key]
         public int BasicChargesId { get; set; }
         public Nullable<int> HPkr { get; set; }
         public Nullable<int> KPkr { get; set; }

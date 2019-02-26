@@ -81,6 +81,7 @@
           <Property Name="ClientId" Type="int" />
           <Property Name="Note" Type="varchar" MaxLength="50" />
           <Property Name="DriverId" Type="int" />
+          <Property Name="CheckInStation" Type="varchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_RentalAgreement_BasicCharges">
           <End Role="BasicCharges" Type="Self.BasicCharges" Multiplicity="0..1" />
@@ -257,6 +258,7 @@
           <Property Name="ClientId" Type="Int32" />
           <Property Name="Note" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DriverId" Type="Int32" />
+          <Property Name="CheckInStation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Car" Relationship="Self.FK_Reservation_Car" FromRole="Reservation" ToRole="Car" />
           <NavigationProperty Name="Client" Relationship="Self.FK_Reservation_Client" FromRole="Reservation" ToRole="Client" />
           <NavigationProperty Name="Driver" Relationship="Self.FK_Reservation_Driver" FromRole="Reservation" ToRole="Driver" />
@@ -436,6 +438,7 @@
                 <ScalarProperty Name="ClientId" ColumnName="ClientId" />
                 <ScalarProperty Name="Note" ColumnName="Note" />
                 <ScalarProperty Name="DriverId" ColumnName="DriverId" />
+                <ScalarProperty Name="CheckInStation" ColumnName="CheckInStation" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
