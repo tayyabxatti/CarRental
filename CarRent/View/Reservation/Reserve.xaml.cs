@@ -84,6 +84,13 @@ namespace CarRent.View
                 cbMethodOfPaymentCredit.IsChecked = false;
             }
         }
+        private void CbRentersName_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var clientName = cbRentersName.SelectedValue.ToString();
+            tbBillingAddress.Text = _db.Clients.Where(a => a.ClientName == clientName).Select(x => x.ClientPickUpAddress).SingleOrDefault();
+            tbFlightNo.Text = _db.Clients.Where(a => a.ClientName == clientName).Select(x => x.ClientFlightNo).SingleOrDefault();
+            tbTelephoneContact.Text = _db.Clients.Where(a => a.ClientName == clientName).Select(x => x.ClientContactNo).SingleOrDefault();
+        }
         private void BtnInsert_Click(object sender, RoutedEventArgs e)
         {
             string meth="";
@@ -136,13 +143,7 @@ namespace CarRent.View
             ReservationList.dataGrid.ItemsSource = _db.Reservations.ToList();
             this.Hide();
         }
-        private void CbRentersName_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var clientName= cbRentersName.SelectedValue.ToString();
-            tbBillingAddress.Text = _db.Clients.Where(a => a.ClientName == clientName).Select(x => x.ClientPickUpAddress).SingleOrDefault();
-            tbFlightNo.Text = _db.Clients.Where(a => a.ClientName == clientName).Select(x => x.ClientFlightNo).SingleOrDefault();
-            tbTelephoneContact.Text = _db.Clients.Where(a => a.ClientName == clientName).Select(x => x.ClientContactNo).SingleOrDefault();
-        }
+        
 
     }
 }

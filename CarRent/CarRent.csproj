@@ -130,6 +130,15 @@
     <Compile Include="View\RentalAgreement.xaml.cs">
       <DependentUpon>RentalAgreement.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Renters\AddRenter.xaml.cs">
+      <DependentUpon>AddRenter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Renters\RenterMenu.xaml.cs">
+      <DependentUpon>RenterMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Renters\UpdateRenter.xaml.cs">
+      <DependentUpon>UpdateRenter.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Reservation\ReservationList.xaml.cs">
       <DependentUpon>ReservationList.xaml</DependentUpon>
     </Compile>
@@ -177,6 +186,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\RentalAgreement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Renters\AddRenter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Renters\RenterMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Renters\UpdateRenter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

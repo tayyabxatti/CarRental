@@ -26,68 +26,128 @@ namespace CarRent.View
             InitializeComponent();
             Id = ReservationId;
             Load();
+            fillCombo();
         }
+        public void fillCombo()
+        {
 
+            var carnames = _db.Cars.ToList();
+            foreach (var item in carnames)
+            {
+                cbCarMake.Items.Add($"{item.CarMake} : {item.CarRegistrationNo}");
+            }
+            var clientnames = _db.Clients.ToList();
+            foreach (var client in clientnames)
+            {
+                cbRentersName.Items.Add($"{client.ClientName}");
+            }
+            var drivernames = _db.Drivers.ToList();
+            foreach (var item in drivernames)
+            {
+                cbDriverName.Items.Add($"{item.DriverName}");
+            }
+        }
+        private void CbDriverName_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+        private void CbCarMake_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            tbCarRegistrationNo.Text = cbCarMake.SelectedValue.ToString().Split(':')[1].Trim();
+        }
+        private void CbSelfDrive_Checked(object sender, RoutedEventArgs e)
+        {
+            if (cbSelfDrive.IsChecked == true)
+            {
+                cbDriver.IsChecked = false;
+            }
+            cbDriverName.Text = null;
+        }
+        private void CbDriver_Checked(object sender, RoutedEventArgs e)
+        {
+            if (cbDriver.IsChecked == true)
+            {
+                cbSelfDrive.IsChecked = false;
+            }
+            cbDriverName.Text = "Driver Name:";
+
+        }
+        private void CbMethodOfPaymentCredit_Checked(object sender, RoutedEventArgs e)
+        {
+            if (cbMethodOfPaymentCredit.IsChecked == true)
+            {
+                cbMethodOfPaymentCash.IsChecked = false;
+            }
+        }
+        private void CbMethodOfPaymentCash_Checked(object sender, RoutedEventArgs e)
+        {
+            if (cbMethodOfPaymentCash.IsChecked == true)
+            {
+                cbMethodOfPaymentCredit.IsChecked = false;
+            }
+        }
+        private void CbRentersName_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var clientName = cbRentersName.SelectedValue.ToString();
+            tbBillingAddress.Text = _db.Clients.Where(a => a.ClientName == clientName).Select(x => x.ClientPickUpAddress).SingleOrDefault();
+            tbFlightNo.Text = _db.Clients.Where(a => a.ClientName == clientName).Select(x => x.ClientFlightNo).SingleOrDefault();
+            tbTelephoneContact.Text = _db.Clients.Where(a => a.ClientName == clientName).Select(x => x.ClientContactNo).SingleOrDefault();
+        }
         public void Load()
         {
             Reservation updateReservation = (from r in _db.Reservations where r.ReservationId == Id select r).SingleOrDefault();
-            
+
             tbBillingAddress.Text = updateReservation.BillingAddress;
-            tbBookedAtDATE.SelectedDate = updateReservation.BookedAt;
-            tbRentersName.Text = updateReservation.Client.ClientName;
+            tbBookedAtDATE.Text = updateReservation.BookedAt.ToString();
+            cbRentersName.Text = updateReservation.Client.ClientName;
             tbTelephoneContact.Text = updateReservation.Client.ClientContactNo;
             tbFlightNo.Text = updateReservation.Client.ClientFlightNo;
             tbPickupAddress.Text = updateReservation.Client.ClientPickUpAddress;
             tbSource.Text = updateReservation.Source;
-            tbReservationDate.SelectedDate = updateReservation.ReservationDateTime;
             tbStaffName.Text = updateReservation.StaffName;
             tbRentingStation.Text = updateReservation.RentingStation;
-            tbCarMake.Text = updateReservation.Car.CarMake;
             tbCarRegistrationNo.Text = updateReservation.Car.CarRegistrationNo;
-            tbDriverName.Text = updateReservation.Driver.DriverName;
-            tbRentersName.Text = updateReservation.Client.ClientName;
+            tbNote.Text = updateReservation.Note;
+            cbDriverName.SelectedItem = updateReservation.Driver.DriverName;
+            cbRentersName.SelectedItem = updateReservation.Client.ClientName;
+            tbCheckInStation.Text = updateReservation.CheckInStation;
+            cbCarMake.SelectedValue = updateReservation.Car.CarMake;
 
-            //check in station and Renter's name remaining.
-
-            if (updateReservation.MethodOfPayment=="cash")
+            if (updateReservation.MethodOfPayment == "cash")
             {
-                cbMethodOfPaymentCash.IsChecked = true ;
+                cbMethodOfPaymentCash.IsChecked = true;
             }
             else
             {
                 cbMethodOfPaymentCredit.IsChecked = true;
             }
         }
-
         private void BtnUpdate_Click(object sender, RoutedEventArgs e)
         {
             Reservation updateReservation = (from r in _db.Reservations where r.ReservationId == Id select r).SingleOrDefault();
-            Client updateClient = (from c in _db.Clients where c.ClientId == updateReservation.ClientId select c).SingleOrDefault();
-            Driver updateDriver = (from d in _db.Drivers where d.DriverId == updateReservation.ReservationId select d).SingleOrDefault();
-            Car updateCar = (from c in _db.Cars where c.CarId == updateReservation.CarId select c).SingleOrDefault();
+            var clientId = (from c in _db.Clients where c.ClientName == cbRentersName.Text select c.ClientId).SingleOrDefault();
+            var driverId = (from d in _db.Drivers where d.DriverName == cbDriverName.Text select d.DriverId).SingleOrDefault();
+            //var CarId = (from c in _db.Cars where c.CarMake == cbCarMake.SelectedItem.ToString().Split(':')[0].Trim() select c.CarId).SingleOrDefault();
             string meth;
             if (cbMethodOfPaymentCash.IsChecked == true)
             {
                 meth = "Cash";
             }
             else { meth = "Credit"; }
-            updateDriver.DriverName = tbDriverName.Text;
+            updateReservation.DriverId = driverId;
             _db.SaveChanges();
-            updateCar.CarMake = tbCarMake.Text;
-            updateCar.CarRegistrationNo = tbCarRegistrationNo.Text;
+            //updateReservation.CarId = CarId;
             _db.SaveChanges();
-            updateClient.ClientName = tbRentersName.Text;
-            updateClient.ClientContactNo = tbTelephoneContact.Text;
-            updateClient.ClientFlightNo = tbFlightNo.Text;
-            updateClient.ClientPickUpAddress = tbPickupAddress.Text;
+            updateReservation.ClientId = clientId;
             _db.SaveChanges();
             updateReservation.BillingAddress = tbBillingAddress.Text;
-             updateReservation.BookedAt = tbBookedAtDATE.SelectedDate;
+             updateReservation.BookedAt = DateTime.Parse(tbBookedAtDATE.Text);
              updateReservation.MethodOfPayment = meth;
              updateReservation.Source = tbSource.Text;
-             updateReservation.ReservationDateTime = tbReservationDate.SelectedDate;
+             updateReservation.ReservationDateTime = DateTime.Now;
              updateReservation.StaffName = tbStaffName.Text;
              updateReservation.RentingStation = tbRentingStation.Text;
+            updateReservation.Note = tbNote.Text;
             _db.SaveChanges();
             ReservationList.dataGrid.ItemsSource = _db.Reservations.ToList();
             this.Hide();

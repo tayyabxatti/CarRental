@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CarRent"
         xmlns:vw="clr-namespace:CarRent.View"
+        xmlns:vw1="clr-namespace:CarRent.View.Renters"
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="800">
     <StackPanel>
@@ -20,6 +21,9 @@
             </TabItem>
             <TabItem Header="Driver">
                 <vw:DriverMenu/>
+            </TabItem>
+            <TabItem Header=" Renters">
+                <vw1:RenterMenu/>
             </TabItem>
         </TabControl>
     </StackPanel>
