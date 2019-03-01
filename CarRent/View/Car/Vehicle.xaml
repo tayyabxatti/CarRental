@@ -28,9 +28,7 @@
                     <DataGridTextColumn Header="TotalTime" Binding="{Binding TotalTime}"/>
                     <DataGridTextColumn Header="DateOut" Binding="{Binding DateOut}"/>
                     <DataGridTextColumn Header="DateIn" Binding="{Binding DateIn}"/>
-                    <DataGridTextColumn Header="DriverId" Binding="{Binding DriverId}"/>
-                    <DataGridTextColumn Header="DriverName" Binding="{Binding Driver.DriverName}"/>
-                    <DataGridTextColumn Header="CompanyName" Binding="{Binding Company.CompanyName}"/>
+                    <DataGridTextColumn Header="CarOwner" Binding="{Binding CarOwner}"/>
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.HeaderTemplate>
                             <DataTemplate>

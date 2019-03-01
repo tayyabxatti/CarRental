@@ -30,11 +30,42 @@ namespace CarRent.View
         {
             var totalKm = Int32.Parse(tbCarKmIn.Text) - Int32.Parse(tbCarKmOut.Text);
             var totalTime = tbTImeIn.Value - tbTimeOut.Value;
-            
+            string carowner = "";
+            if(cbCarOwnerOwn.IsChecked == true)
+            {
+                carowner = cbCarOwnerOwn.Content.ToString();
+            }
+            else if (cbCarOwnerNonPool.IsChecked == true)
+            {
+                carowner = cbCarOwnerNonPool.Content.ToString();
+            }
+            else
+            {
+                carowner = cbCarOwnerInvestor.Content.ToString();
+            }
+            string fuelstate = "";
+            if (cbCarFuelStateFull.IsChecked == true)
+            {
+                fuelstate = cbCarFuelStateFull.Content.ToString();
+            }
+            else if(cbCarFuelStateHalf.IsChecked == true)
+            {
+                fuelstate = cbCarFuelStateHalf.Content.ToString();
+            }
+            else if(cbCarFuelStateQuarter.IsChecked== true)
+            {
+                fuelstate = cbCarFuelStateQuarter.Content.ToString();
+            }
+            else if (cbCarFuelStateEmpty.IsChecked == true)
+            {
+                fuelstate = cbCarFuelStateEmpty.Content.ToString();
+            }
+
+
             Car car = new Car()
             {
-                CarFuelState = tbCarFuelState.Text,
-                CarKmIn = Int32.Parse(tbCarKmIn.Text),
+             
+            CarKmIn = Int32.Parse(tbCarKmIn.Text),
                 CarKmOut = Int32.Parse(tbCarKmOut.Text),
                 CarMake = tbCarMake.Text,
                 CarRegistrationNo = tbCarRegistrationNo.Text,
@@ -46,12 +77,84 @@ namespace CarRent.View
                 TimeBill = Int32.Parse(tbTimeBill.Text),
                 TotalKm = totalKm,
                 TotalTime = DateTime.Parse(totalTime.ToString()),
+                
             };
             _db.Cars.Add(car);
             _db.SaveChanges();
             Vehicle.dataGrid.ItemsSource = _db.Cars.ToList();
             this.Hide();
 
+        }
+
+        private void CbCarOwnerOwn_Checked(object sender, RoutedEventArgs e)
+        {
+            if (cbCarOwnerOwn.IsChecked == true)
+            {
+                cbCarOwnerNonPool.IsChecked = false;
+                cbCarOwnerInvestor.IsChecked = false; 
+            }
+        }
+
+        private void CbCarOwnerInvestor_Checked(object sender, RoutedEventArgs e)
+        {
+            if (cbCarOwnerInvestor.IsChecked == true)
+            {
+                cbCarOwnerOwn.IsChecked = false;
+                cbCarOwnerNonPool.IsChecked = false;
+            }
+        }
+
+        private void CbCarOwnerNonPool_Checked(object sender, RoutedEventArgs e)
+        {
+            if (cbCarOwnerNonPool.IsChecked == true)
+            {
+                cbCarOwnerOwn.IsChecked = false;
+                cbCarOwnerInvestor.IsChecked = false;
+            }
+        }
+
+        private void CbCarFuelStateFull_Checked(object sender, RoutedEventArgs e)
+        {
+            if (cbCarFuelStateFull.IsChecked == true)
+            {
+                cbCarFuelStateHalf.IsChecked = false;
+                cbCarFuelStateQuarter.IsChecked = false;
+                cbCarFuelStateEmpty.IsChecked = false;
+            }
+        }
+
+        private void CbCarFuelStateQuarter_Checked(object sender, RoutedEventArgs e)
+        {
+            if(cbCarFuelStateQuarter.IsChecked == true)
+            {
+                cbCarFuelStateFull.IsChecked = false;
+                cbCarFuelStateEmpty.IsChecked = false;
+                cbCarFuelStateHalf.IsChecked = false;
+
+            }
+
+        }
+
+        private void CbCarFuelStateHalf_Checked(object sender, RoutedEventArgs e)
+        {
+            if(cbCarFuelStateHalf.IsChecked == true)
+            {
+                cbCarFuelStateFull.IsChecked = false;
+                cbCarFuelStateEmpty.IsChecked = false;
+                cbCarFuelStateQuarter.IsChecked = false;
+            }
+
+
+        }
+
+        private void CbCarFuelStateEmpty_Checked(object sender, RoutedEventArgs e)
+        {
+            if(cbCarFuelStateEmpty.IsChecked == true)
+            {
+                cbCarFuelStateFull.IsChecked = false;
+                cbCarFuelStateQuarter.IsChecked = false;
+                cbCarFuelStateHalf.IsChecked = false;
+            }
         }
     }
 }

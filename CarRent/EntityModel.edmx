@@ -37,6 +37,7 @@
           <Property Name="TotalTime" Type="datetime" />
           <Property Name="DateOut" Type="datetime" />
           <Property Name="DateIn" Type="datetime" />
+          <Property Name="CarOwner" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Client">
           <Key>
@@ -209,6 +210,7 @@
           <Property Name="TotalTime" Type="DateTime" Precision="3" />
           <Property Name="DateOut" Type="DateTime" Precision="3" />
           <Property Name="DateIn" Type="DateTime" Precision="3" />
+          <Property Name="CarOwner" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Reservations" Relationship="Self.FK_Reservation_Car" FromRole="Car" ToRole="Reservation" />
         </EntityType>
         <EntityType Name="Client">
@@ -390,6 +392,7 @@
                 <ScalarProperty Name="TotalTime" ColumnName="TotalTime" />
                 <ScalarProperty Name="DateOut" ColumnName="DateOut" />
                 <ScalarProperty Name="DateIn" ColumnName="DateIn" />
+                <ScalarProperty Name="CarOwner" ColumnName="CarOwner" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

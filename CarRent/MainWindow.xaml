@@ -17,7 +17,7 @@
                 <vw:Vehicle/>
             </TabItem>
             <TabItem Header="Rental Agreement">
-                <!--<vw:RentalAgreement/>-->
+                <vw:RentalAgreement/>
             </TabItem>
             <TabItem Header="Driver">
                 <vw:DriverMenu/>

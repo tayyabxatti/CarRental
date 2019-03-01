@@ -11,8 +11,7 @@ namespace CarRent
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Car
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,7 +19,7 @@ namespace CarRent
         {
             this.Reservations = new HashSet<Reservation>();
         }
-        [Key]
+    
         public int CarId { get; set; }
         public string CarMake { get; set; }
         public string CarRegistrationNo { get; set; }
@@ -35,6 +34,7 @@ namespace CarRent
         public Nullable<System.DateTime> TotalTime { get; set; }
         public Nullable<System.DateTime> DateOut { get; set; }
         public Nullable<System.DateTime> DateIn { get; set; }
+        public string CarOwner { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Reservation> Reservations { get; set; }

@@ -4,9 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="dffc2b54a0c946f4b03fd6526863cea3" Name="Diagram1">
+      <Diagram DiagramId="7a2898a852ba45a7bd5a128d3d9a2484" Name="Diagram1">
         <EntityTypeShape EntityType="carRentModel.BasicCharge" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="carRentModel.Car" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="carRentModel.Car" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="carRentModel.Client" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
         <EntityTypeShape EntityType="carRentModel.Driver" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
         <EntityTypeShape EntityType="carRentModel.RentalAgreement" Width="1.5" PointX="5.25" PointY="2.125" IsExpanded="true" />
