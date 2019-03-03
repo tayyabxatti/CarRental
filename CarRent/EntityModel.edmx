@@ -65,6 +65,7 @@
           <Property Name="AcutalItinerary" Type="varchar" MaxLength="50" />
           <Property Name="BasicChargesId" Type="int" />
           <Property Name="ReservationId" Type="int" />
+          <Property Name="CarId" Type="int" />
         </EntityType>
         <EntityType Name="Reservation">
           <Key>
@@ -93,6 +94,18 @@
             </Principal>
             <Dependent Role="RentalAgreement">
               <PropertyRef Name="BasicChargesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RentalAgreement_Car">
+          <End Role="Car" Type="Self.Car" Multiplicity="0..1" />
+          <End Role="RentalAgreement" Type="Self.RentalAgreement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Car">
+              <PropertyRef Name="CarId" />
+            </Principal>
+            <Dependent Role="RentalAgreement">
+              <PropertyRef Name="CarId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -155,6 +168,10 @@
             <End Role="BasicCharges" EntitySet="BasicCharges" />
             <End Role="RentalAgreement" EntitySet="RentalAgreement" />
           </AssociationSet>
+          <AssociationSet Name="FK_RentalAgreement_Car" Association="Self.FK_RentalAgreement_Car">
+            <End Role="Car" EntitySet="Car" />
+            <End Role="RentalAgreement" EntitySet="RentalAgreement" />
+          </AssociationSet>
           <AssociationSet Name="FK_RentalAgreement_Reservation" Association="Self.FK_RentalAgreement_Reservation">
             <End Role="Reservation" EntitySet="Reservation" />
             <End Role="RentalAgreement" EntitySet="RentalAgreement" />
@@ -211,6 +228,7 @@
           <Property Name="DateOut" Type="DateTime" Precision="3" />
           <Property Name="DateIn" Type="DateTime" Precision="3" />
           <Property Name="CarOwner" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="RentalAgreements" Relationship="Self.FK_RentalAgreement_Car" FromRole="Car" ToRole="RentalAgreement" />
           <NavigationProperty Name="Reservations" Relationship="Self.FK_Reservation_Car" FromRole="Car" ToRole="Reservation" />
         </EntityType>
         <EntityType Name="Client">
@@ -241,7 +259,9 @@
           <Property Name="AcutalItinerary" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="BasicChargesId" Type="Int32" />
           <Property Name="ReservationId" Type="Int32" />
+          <Property Name="CarId" Type="Int32" />
           <NavigationProperty Name="BasicCharge" Relationship="Self.FK_RentalAgreement_BasicCharges" FromRole="RentalAgreement" ToRole="BasicCharges" />
+          <NavigationProperty Name="Car" Relationship="Self.FK_RentalAgreement_Car" FromRole="RentalAgreement" ToRole="Car" />
           <NavigationProperty Name="Reservation" Relationship="Self.FK_RentalAgreement_Reservation" FromRole="RentalAgreement" ToRole="Reservation" />
         </EntityType>
         <EntityType Name="Reservation">
@@ -275,6 +295,18 @@
             </Principal>
             <Dependent Role="RentalAgreement">
               <PropertyRef Name="BasicChargesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RentalAgreement_Car">
+          <End Role="Car" Type="Self.Car" Multiplicity="0..1" />
+          <End Role="RentalAgreement" Type="Self.RentalAgreement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Car">
+              <PropertyRef Name="CarId" />
+            </Principal>
+            <Dependent Role="RentalAgreement">
+              <PropertyRef Name="CarId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -335,6 +367,10 @@
           <EntitySet Name="Reservations" EntityType="Self.Reservation" />
           <AssociationSet Name="FK_RentalAgreement_BasicCharges" Association="Self.FK_RentalAgreement_BasicCharges">
             <End Role="BasicCharges" EntitySet="BasicCharges" />
+            <End Role="RentalAgreement" EntitySet="RentalAgreements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RentalAgreement_Car" Association="Self.FK_RentalAgreement_Car">
+            <End Role="Car" EntitySet="Cars" />
             <End Role="RentalAgreement" EntitySet="RentalAgreements" />
           </AssociationSet>
           <AssociationSet Name="FK_Reservation_Car" Association="Self.FK_Reservation_Car">
@@ -423,6 +459,7 @@
                 <ScalarProperty Name="AcutalItinerary" ColumnName="AcutalItinerary" />
                 <ScalarProperty Name="BasicChargesId" ColumnName="BasicChargesId" />
                 <ScalarProperty Name="ReservationId" ColumnName="ReservationId" />
+                <ScalarProperty Name="CarId" ColumnName="CarId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

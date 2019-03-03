@@ -17,6 +17,7 @@ namespace CarRent
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Car()
         {
+            this.RentalAgreements = new HashSet<RentalAgreement>();
             this.Reservations = new HashSet<Reservation>();
         }
     
@@ -36,6 +37,8 @@ namespace CarRent
         public Nullable<System.DateTime> DateIn { get; set; }
         public string CarOwner { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RentalAgreement> RentalAgreements { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Reservation> Reservations { get; set; }
     }

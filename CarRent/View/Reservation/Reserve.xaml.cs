@@ -93,8 +93,8 @@ namespace CarRent.View
         }
         private void BtnInsert_Click(object sender, RoutedEventArgs e)
         {
-            string meth="";
-            if (cbMethodOfPaymentCash.IsChecked ==true )
+            string meth = "";
+            if (cbMethodOfPaymentCash.IsChecked == true)
             {
                 meth = "Cash";
             }
@@ -105,7 +105,7 @@ namespace CarRent.View
                 ClientFlightNo = tbFlightNo.Text,
                 ClientPickUpAddress = tbPickupAddress.Text,
                 ClientContactNo = tbTelephoneContact.Text,
-                ClientName= cbRentersName.Text,
+                ClientName = cbRentersName.Text,
             };
             _db.SaveChanges();
             Car car = new Car()
@@ -113,9 +113,9 @@ namespace CarRent.View
                 CarMake = cbCarMake.SelectedValue.ToString().Split(':')[0].Trim(),
                 CarRegistrationNo = tbCarRegistrationNo.Text,
             };
-            var cid=_db.Clients.Where(c => c.ClientName == client.ClientName && c.ClientContactNo == client.ClientContactNo).Select(a => a.ClientId).SingleOrDefault();
-            var carid=_db.Cars.Where(c => c.CarMake == car.CarMake && c.CarRegistrationNo == tbCarRegistrationNo.Text).Select(f => f.CarId).SingleOrDefault();
-            var did=_db.Drivers.Where(x => x.DriverName == cbDriverName.Text).Select(f => f.DriverId).SingleOrDefault();
+            var cid = _db.Clients.Where(c => c.ClientName == client.ClientName && c.ClientContactNo == client.ClientContactNo).Select(a => a.ClientId).SingleOrDefault();
+            var carid = _db.Cars.Where(c => c.CarMake == car.CarMake && c.CarRegistrationNo == tbCarRegistrationNo.Text).Select(f => f.CarId).SingleOrDefault();
+            var did = _db.Drivers.Where(x => x.DriverName == cbDriverName.Text).Select(f => f.DriverId).SingleOrDefault();
             _db.SaveChanges();
             Reservation reservation = new Reservation()
             {
@@ -136,9 +136,18 @@ namespace CarRent.View
                 StaffName = tbStaffName.Text,
                 Note = tbNote.Text,
                 ReservationDateTime = DateTime.Now,
-                
+
             };
             _db.Reservations.Add(reservation);
+            _db.SaveChanges();
+            RentalAgreement rentalAgreement = new RentalAgreement()
+            {
+               ReservationId = reservation.ReservationId,
+               CarId = reservation.CarId,
+               
+               
+            };
+            _db.RentalAgreements.Add(rentalAgreement);
             _db.SaveChanges();
             ReservationList.dataGrid.ItemsSource = _db.Reservations.ToList();
             this.Hide();
