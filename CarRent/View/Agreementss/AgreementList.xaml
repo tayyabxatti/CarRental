@@ -14,10 +14,10 @@
             </Grid.RowDefinitions>
             <DataGrid x:Name="AgreemenGrid" x:FieldModifier="public" IsReadOnly="True" AutoGenerateColumns="False" SelectedItem="{Binding CarId}"  Grid.Row="0" ColumnWidth="*">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="CarId" Binding="{Binding RentalAgreementId}" />
-                    <DataGridTextColumn Header="CarMake" Binding="{Binding Car.CarMake }"/>
-                    <DataGridTextColumn Header="CarRegistrationNo" Binding="{Binding Car.CarRegistrationNo}"/>
-                    <DataGridTextColumn Header="CarId" Binding="{Binding Reservation.Driver.DriverName}" />
+                    <DataGridTextColumn Header="InvoiceNo" Binding="{Binding RentalAgreementId}" />
+                    <DataGridTextColumn Header="CarMake" Binding="{Binding Reservation.Car.CarMake }"/>
+                    <DataGridTextColumn Header="CarRegistrationNo" Binding="{Binding Reservation.Car.CarRegistrationNo}"/>
+                    <DataGridTextColumn Header="DriverName" Binding="{Binding Reservation.Reservation.Driver.DriverName}" />
                     <DataGridTextColumn Header="ReservationDateTime" Binding="{Binding Reservation.ReservationDateTime}" />
                     <DataGridTextColumn Header="ReservationNo" Binding="{Binding Reservation.ReservationId}"/>
                     <DataGridTextColumn Header="ClientName" Binding="{Binding Reservation.Client.ClientName}"/>

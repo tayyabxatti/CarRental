@@ -89,8 +89,7 @@ namespace CarRent.View
         private void CbRentersName_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var clientName = cbRentersName.SelectedValue.ToString();
-            tbBillingAddress.Text = _db.Clients.Where(a => a.ClientName == clientName).Select(x => x.ClientPickUpAddress).SingleOrDefault();
-            tbFlightNo.Text = _db.Clients.Where(a => a.ClientName == clientName).Select(x => x.ClientFlightNo).SingleOrDefault();
+            tbPickupAddress.Text = _db.Clients.Where(a => a.ClientName == clientName).Select(x => x.ClientPickUpAddress).SingleOrDefault();
             tbTelephoneContact.Text = _db.Clients.Where(a => a.ClientName == clientName).Select(x => x.ClientContactNo).SingleOrDefault();
         }
         public void Load()
@@ -101,7 +100,6 @@ namespace CarRent.View
             tbBookedAtDATE.Text = updateReservation.BookedAt.ToString();
             cbRentersName.Text = updateReservation.Client.ClientName;
             tbTelephoneContact.Text = updateReservation.Client.ClientContactNo;
-            tbFlightNo.Text = updateReservation.Client.ClientFlightNo;
             tbPickupAddress.Text = updateReservation.Client.ClientPickUpAddress;
             tbSource.Text = updateReservation.Source;
             tbStaffName.Text = updateReservation.StaffName;
@@ -141,12 +139,12 @@ namespace CarRent.View
             updateReservation.ClientId = clientId;
             _db.SaveChanges();
             updateReservation.BillingAddress = tbBillingAddress.Text;
-             updateReservation.BookedAt = DateTime.Parse(tbBookedAtDATE.Text);
-             updateReservation.MethodOfPayment = meth;
-             updateReservation.Source = tbSource.Text;
-             updateReservation.ReservationDateTime = DateTime.Now;
-             updateReservation.StaffName = tbStaffName.Text;
-             updateReservation.RentingStation = tbRentingStation.Text;
+            updateReservation.BookedAt = DateTime.Parse(tbBookedAtDATE.Text);
+            updateReservation.MethodOfPayment = meth;
+            updateReservation.Source = tbSource.Text;
+            updateReservation.ReservationDateTime = DateTime.Now;
+            updateReservation.StaffName = tbStaffName.Text;
+            updateReservation.RentingStation = tbRentingStation.Text;
             updateReservation.Note = tbNote.Text;
             _db.SaveChanges();
             ReservationList.dataGrid.ItemsSource = _db.Reservations.ToList();

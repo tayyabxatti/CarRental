@@ -17,7 +17,6 @@
 
                     <DataGridTextColumn Header="ClientId" Binding="{Binding ClientId}"/>
                     <DataGridTextColumn Header="ClientName" Binding="{Binding ClientName}"/>
-                    <DataGridTextColumn Header="ClientFlightNo" Binding="{Binding ClientFlightNo}"/>
                     <DataGridTextColumn Header="ClientPickUpAddress" Binding="{Binding ClientPickUpAddress}"/>
                     <DataGridTextColumn Header="ClientContactNo" Binding="{Binding ClientContactNo}"/>
                     <DataGridTextColumn Header="ClientCompanyName" Binding="{Binding ClientCompanyName}"/>

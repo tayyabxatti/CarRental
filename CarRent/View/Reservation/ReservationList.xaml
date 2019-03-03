@@ -17,7 +17,6 @@
                     <DataGridTextColumn Header="ReservationId" Binding="{Binding ReservationId}" />
                     <DataGridTextColumn Header="RentingStation" Binding="{Binding RentingStation}"/>
                     <DataGridTextColumn Header="BookedAt" Binding="{Binding BookedAt}"/>
-                    <DataGridTextColumn Header="Client Flight No" Binding="{Binding Client.ClientFlightNo}"/>
                     <DataGridTextColumn Header="Car Make" Binding="{Binding Car.CarMake}"/>
                     <DataGridTextColumn Header="Car RegNo" Binding="{Binding Car.CarRegistrationNo}"/>
                     <DataGridTextColumn Header="Driver Name" Binding="{Binding Driver.DriverName}"/>

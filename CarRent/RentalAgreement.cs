@@ -21,7 +21,6 @@ namespace CarRent
         public Nullable<int> CarId { get; set; }
     
         public virtual BasicCharge BasicCharge { get; set; }
-        public virtual Car Car { get; set; }
         public virtual Reservation Reservation { get; set; }
     }
 }

@@ -35,7 +35,7 @@ namespace CarRent.View.Renters
             tbClientContactNo.Text = updateClient.ClientContactNo;
             tbClientName.Text = updateClient.ClientName;
             tbClientPickUpAddress.Text = updateClient.ClientPickUpAddress;
-            tbClientFlightNo.Text = updateClient.ClientFlightNo;
+            
         }
 
         private void BtnUpdate_Click(object sender, RoutedEventArgs e)
@@ -45,7 +45,6 @@ namespace CarRent.View.Renters
             updateClient.ClientPickUpAddress =  tbClientPickUpAddress.Text;
             updateClient.ClientCompanyName = tbClientCompanyName.Text;
             updateClient.ClientContactNo = tbClientContactNo.Text;
-            updateClient.ClientFlightNo = tbClientFlightNo.Text;
             _db.SaveChanges();
             RenterMenu.dataGrid.ItemsSource = _db.Clients.ToList();
             this.Hide();

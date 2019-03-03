@@ -24,9 +24,6 @@
             <TextBlock Grid.Column="0" Grid.Row="0" Text="Client Name" />
             <TextBox x:Name = "tbClientName" Grid.Row="0" Grid.Column="1" />
             <!--ClientsName-->
-            <TextBlock Grid.Column="0" Grid.Row="1" Text="Client Flight No" />
-            <TextBox x:Name = "tbClientFlightNo" Grid.Row="1" Grid.Column="1" />
-            <!--ClientsName-->
             <TextBlock Grid.Column="0" Grid.Row="2" Text="ClientPickUpAddress" />
             <TextBox x:Name = "tbClientPickUpAddress" Grid.Row="2" Grid.Column="1" />
             <!--ClientsName-->

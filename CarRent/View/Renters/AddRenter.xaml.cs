@@ -33,7 +33,6 @@ namespace CarRent.View.Renters
                 ClientName = tbClientName.Text,
                 ClientCompanyName = tbClientCompanyName.Text,
                 ClientContactNo = tbClientContactNo.Text,
-                ClientFlightNo = tbClientFlightNo.Text,
                 ClientPickUpAddress = tbClientPickUpAddress.Text,
             };
             _db.Clients.Add(client);

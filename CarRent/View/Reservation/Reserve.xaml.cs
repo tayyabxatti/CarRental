@@ -87,8 +87,7 @@ namespace CarRent.View
         private void CbRentersName_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var clientName = cbRentersName.SelectedValue.ToString();
-            tbBillingAddress.Text = _db.Clients.Where(a => a.ClientName == clientName).Select(x => x.ClientPickUpAddress).SingleOrDefault();
-            tbFlightNo.Text = _db.Clients.Where(a => a.ClientName == clientName).Select(x => x.ClientFlightNo).SingleOrDefault();
+            tbPickupAddress.Text = _db.Clients.Where(a => a.ClientName == clientName).Select(x => x.ClientPickUpAddress).SingleOrDefault();
             tbTelephoneContact.Text = _db.Clients.Where(a => a.ClientName == clientName).Select(x => x.ClientContactNo).SingleOrDefault();
         }
         private void BtnInsert_Click(object sender, RoutedEventArgs e)
@@ -102,7 +101,7 @@ namespace CarRent.View
 
             Client client = new Client()
             {
-                ClientFlightNo = tbFlightNo.Text,
+                
                 ClientPickUpAddress = tbPickupAddress.Text,
                 ClientContactNo = tbTelephoneContact.Text,
                 ClientName = cbRentersName.Text,

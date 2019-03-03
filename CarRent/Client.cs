@@ -22,7 +22,6 @@ namespace CarRent
     
         public int ClientId { get; set; }
         public string ClientName { get; set; }
-        public string ClientFlightNo { get; set; }
         public string ClientPickUpAddress { get; set; }
         public string ClientContactNo { get; set; }
         public string ClientCompanyName { get; set; }
