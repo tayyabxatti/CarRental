@@ -34,15 +34,10 @@ namespace CarRent.View.Agreementss
         }
         private void BtnUpdate_Click(object sender, RoutedEventArgs e)
         {
-
+            int Id = (AgreemenGrid.SelectedItem as RentalAgreement).RentalAgreementId;
+            AgreementUpdate agreementUpdate = new AgreementUpdate(Id);
+            agreementUpdate.ShowDialog();
         }
-
-        private void BtnDelete_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        
         private void BtnView_Click(object sender, RoutedEventArgs e)
         {
             int Id = (AgreemenGrid.SelectedItem as RentalAgreement).RentalAgreementId;

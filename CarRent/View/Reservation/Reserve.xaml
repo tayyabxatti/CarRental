@@ -37,26 +37,26 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Column="0" Grid.Row="0" Text="S#"/>
-        <TextBlock Grid.Column="0" Grid.Row="1" Text="1"/>
-        <TextBlock Grid.Column="0" Grid.Row="2" Text="2"/>
-        <TextBlock Grid.Column="0" Grid.Row="3" Text="3"/>
-        <TextBlock Grid.Column="0" Grid.Row="4" Text="4"/>
-        <TextBlock Grid.Column="0" Grid.Row="5" Text="5"/>
-        <TextBlock Grid.Column="0" Grid.Row="6" Text="6"/>
-        <TextBlock Grid.Column="0" Grid.Row="7" Text="7"/>
-        <TextBlock Grid.Column="0" Grid.Row="8" Text="8"/>
-        <TextBlock Grid.Column="0" Grid.Row="9" Text="9"/>
-        <TextBlock Grid.Column="0" Grid.Row="11" Text="10"/>
-        <TextBlock Grid.Column="0" Grid.Row="12" Text="11"/>
-        <TextBlock Grid.Column="0" Grid.Row="13" Text="12"/>
-        <TextBlock Grid.Column="0" Grid.Row="14" Text="13"/>
+        <TextBlock Grid.Column="0" Grid.Row="0"/>
+        <TextBlock Grid.Column="0" Grid.Row="1"/>
+        <TextBlock Grid.Column="0" Grid.Row="2" Text="1"/>
+        <TextBlock Grid.Column="0" Grid.Row="3" Text="2"/>
+        <TextBlock Grid.Column="0" Grid.Row="4" Text="3"/>
+        <TextBlock Grid.Column="0" Grid.Row="5" Text="4"/>
+        <TextBlock Grid.Column="0" Grid.Row="6" Text="5"/>
+        <TextBlock Grid.Column="0" Grid.Row="7" Text="6"/>
+        <TextBlock Grid.Column="0" Grid.Row="8" Text="7"/>
+        <TextBlock Grid.Column="0" Grid.Row="9" Text="8"/>
+        <TextBlock Grid.Column="0" Grid.Row="11" Text="9"/>
+        <TextBlock Grid.Column="0" Grid.Row="12" Text="10"/>
+        <TextBlock Grid.Column="0" Grid.Row="13" Text="11"/>
+        <TextBlock Grid.Column="0" Grid.Row="14" Text="12"/>
         <!--STATION-->
-        <TextBlock Grid.Column="1" Grid.Row="1" Text="RENTING STATION" />
-        <TextBox x:Name = "tbRentingStation" Grid.Column="2" Grid.ColumnSpan="5" Grid.Row="1" />
+        <TextBlock Grid.Column="1" Grid.Row="2" Text="RENTING STATION" Margin="0,1,0,0" />
+        <TextBox x:Name = "tbRentingStation" Grid.Column="2" Grid.ColumnSpan="5" Grid.Row="2" Margin="0,1,0,0" />
         <!--CHECK OUT DATE TIME-->
-        <TextBlock Grid.Column="1" Grid.Row="2" Text="BOOKED AT TIME/DATE" />
-        <xctk:DateTimePicker x:Name = "tbBookedAtDATE" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="5" />
+        <TextBlock Grid.Column="1" Grid.Row="3" Text="BOOKED AT TIME/DATE" Margin="0,0,0,23" Grid.RowSpan="2" />
+        <xctk:DateTimePicker x:Name = "tbBookedAtDATE" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="5" Margin="0,0,0,23" Grid.RowSpan="2" />
         <!--CAR GROUP-->
         <TextBlock Grid.Column="1" Grid.Row="4" Text="CAR GROUP(MAKE,MODEL)" />
         <ComboBox x:Name="cbCarMake"  Grid.Column="2" Grid.Row="4" Text="CarMake" SelectionChanged="CbCarMake_SelectionChanged">
@@ -93,7 +93,7 @@
         <TextBox x:Name = "tbStaffName" Grid.Column="2" Grid.ColumnSpan="5" Grid.Row="13" />
         <!--NOTE-->
         <TextBlock Grid.Column="1" Grid.Row="14" Text="NOTE" />
-        
+
 
         <TextBox x:Name = "tbNote" Grid.Column="2" Grid.ColumnSpan="5" Grid.Row="14" Grid.RowSpan="2" />
 
