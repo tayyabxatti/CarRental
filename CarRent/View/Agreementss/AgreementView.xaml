@@ -134,7 +134,6 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <!--KMS IN-->
                     <TextBlock Grid.Column="0" Grid.Row="0" Text="KMS IN"/>
@@ -166,64 +165,53 @@
                     <TextBox Grid.Column="5" x:Name="tbTotalDays" Grid.Row="2"/>
 
                     <!--BASIC CHARGES-->
-                    <TextBlock Grid.Row="5" Grid.Column="0" Text="BASIC CHARGES" Grid.ColumnSpan="2" Margin="0,0,28,0" />
-                    <TextBox Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="3" Margin="36,0,0,0" />
-                    <TextBox Grid.Column="4" Grid.Row="5"/>
-                    <TextBox Grid.Column="5" Grid.Row="5"/>
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="BASIC CHARGES" FontWeight="Bold" Grid.ColumnSpan="2"  />
+                    <!--DAILY CHARGES-->
+                    <TextBlock Grid.Column="0" Grid.Row="6" Text="Daily " />
+                    <TextBox Grid.Column="1" x:Name="tbDailyCharges" Grid.Row="6" Grid.ColumnSpan="2" />
                     <!--MONTHLY CHARGES-->
-                    <TextBox Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="4" />
-                    <TextBox Grid.Column="4" Grid.Row="6"/>
-                    <TextBox Grid.Column="5" Grid.Row="6"/>
+                    <TextBlock Grid.Column="3" Grid.Row="6" Text="Monthly"/>
+                    <TextBox Grid.Column="4" Grid.Row="6" x:Name="tbMonthlyCharges" Grid.ColumnSpan="2"/>
                     <!--HR@RS-->
-                    <TextBox Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,28,0" />
-                    <TextBlock Grid.Column="1" Grid.Row="7" Text="            HR"/>
-                    <TextBlock Grid.Row="7" Grid.Column="2" Text="@RS"/>
-                    <TextBox Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="2" Margin="33,0,0,0"/>
-                    <TextBox Grid.Column="4" Grid.Row="7" />
-                    <TextBox Grid.Column="5" Grid.Row="7"/>
+                    <TextBlock Grid.Column="2"  Grid.Row="8" Text="HR @ RS"/>
+                    <TextBox Grid.Column="0" Grid.ColumnSpan="2" x:Name="tbHr" Grid.Row="8" />
+                    <TextBox Grid.Column="3" Grid.ColumnSpan="2" Name="tbhrRs" Grid.Row="8"/>
                     <!--KMS@RS-->
-                    <TextBox Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,28,0" />
-                    <TextBlock Grid.Column="1" Grid.Row="8" Text="            KMS"/>
-                    <TextBlock Grid.Row="8" Grid.Column="2" Text="@RS"/>
-                    <TextBox Grid.Column="2" Grid.Row="8" Grid.ColumnSpan="2" Margin="33,0,0,0"/>
-                    <TextBox Grid.Column="4" Grid.Row="8" />
-                    <TextBox Grid.Column="5" Grid.Row="8"/>
-                    <!--MONTHLY CHARGES-->
-                    <TextBox Grid.Column="0" Grid.Row="9" Grid.ColumnSpan="4" />
-                    <TextBox Grid.Column="4" Grid.Row="9"/>
-                    <TextBox Grid.Column="5" Grid.Row="9"/>
+                    <TextBlock Grid.Column="2" Grid.Row="9" Text="KMS @ RS"/>
+                    <TextBox Grid.Column="0" Grid.ColumnSpan="2" x:Name="tbKms" Grid.Row="9"/>
+                    <TextBox Grid.Column="3" Grid.ColumnSpan="2" x:Name="tbkmsRs" Grid.Row="9"/>
+                    <!--DRIVER@RS-->
+                    <TextBlock Grid.Column="2" Grid.Row="10" Text="DRIVER@RS"/>
+                    <TextBox Grid.Column="0" Grid.ColumnSpan="2" x:Name="tbDriver" Grid.Row="10"/>
+                    <TextBox Grid.Column="3" Grid.ColumnSpan="2" x:Name="tbdriverRs" Grid.Row="10"/>
+                    <!--16% GST-->
+                    <TextBlock Grid.Column="0" Grid.Row="11" Text="16% GST" />
+                    <TextBox Grid.Row="11" Grid.Column="2" Grid.ColumnSpan="4" x:Name="tbGst" Margin="0,0,1,16.68" Grid.RowSpan="2" />
                     <!--SUB TOTAL-->
-                    <TextBlock Grid.Column="0" Grid.Row="10" Text="SUB TOTAL"/>
-                    <TextBox Grid.Column="2" Grid.Row="10" Grid.ColumnSpan="2"/>
-                    <TextBox Grid.Column="4" Grid.Row="10"/>
-                    <TextBox Grid.Column="5" Grid.Row="10"/>
-                    <!--MONTHLY CHARGES-->
-                    <TextBox Grid.Column="0" Grid.Row="11" Grid.ColumnSpan="4" />
-                    <TextBox Grid.Column="4" Grid.Row="11"/>
-                    <TextBox Grid.Column="5" Grid.Row="11"/>
-                    <!--MISC-->
-                    <TextBlock Grid.Column="0" Grid.Row="12" Text="MISC"/>
-                    <TextBox Grid.Column="2" Grid.Row="12" Grid.ColumnSpan="2"/>
-                    <TextBox Grid.Column="4" Grid.Row="12"/>
-                    <TextBox Grid.Column="5" Grid.Row="12"/>
-                    <!--TOTAL CHARGES-->
-                    <TextBlock Grid.Column="0" Grid.Row="13" Text="TOTAL CHARGES" Grid.ColumnSpan="2" Margin="0,0,33,0"/>
-                    <TextBox Grid.Column="2" Grid.Row="13" Grid.ColumnSpan="2"/>
-                    <TextBox Grid.Column="4" Grid.Row="13"/>
-                    <TextBox Grid.Column="5" Grid.Row="13"/>
+                    <TextBlock Grid.Column="0" Grid.Row="12" Text="SUB TOTAL" />
+                    <TextBox Grid.Column="2" Grid.Row="12" Grid.ColumnSpan="4" x:Name="tbSubTotal" Margin="0,0,1,16.92" Grid.RowSpan="2"/>
+                    <!--FUEL-->
+                    <TextBlock Grid.Column="0" Grid.Row="13" Text="FUEL"/>
+                    <TextBox Grid.Column="2" Grid.Row="13" Grid.ColumnSpan="4" x:Name="tbFuel" Margin="0,0,1,16.92" Grid.RowSpan="2"/>
+
+                    <!--TOOL TAX -->
+                    <TextBlock Grid.Column="0" Grid.Row="14" Text="TOL TAX" />
+                    <TextBox Grid.Column="2" Grid.ColumnSpan="4" Grid.Row="14" x:Name="tbToolTax" Margin="0,0,1,17.28" Grid.RowSpan="2" />
+                    <!--DRIVER NIGHT-->
+                    <TextBlock Grid.Column="0" Grid.Row="15" Text="DRIVER NIGHT"  />
+                    <TextBox Grid.Column="2" Grid.Row="15" Grid.ColumnSpan="4" x:Name="tbDriverNight" Margin="0,0,1,16.68" Grid.RowSpan="2" />
+                    <!--TOTAL-->
+                    <TextBlock Grid.Column="0" Grid.Row="16" Text="TOTAL"/>
+                    <TextBox Grid.Column="2" Grid.Row="16" Grid.ColumnSpan="4" x:Name="tbTotal" Margin="0,0,1,16.92" Grid.RowSpan="2" />
                     <!--PREPAYMENT-->
-                    <TextBlock Grid.Column="0" Grid.Row="14" Text="PREPAYMENT" HorizontalAlignment="Left" Width="95" Grid.ColumnSpan="2"/>
-                    <TextBox Grid.Column="2" Grid.Row="14" Grid.ColumnSpan="2"/>
-                    <TextBox Grid.Column="4" Grid.Row="14"/>
-                    <TextBox Grid.Column="5" Grid.Row="14"/>
+                    <TextBlock Grid.Row="17" Text="PREPAYMENT" HorizontalAlignment="Left"  Grid.ColumnSpan="2" />
+                    <TextBox Grid.Column="2" Grid.ColumnSpan="4" Grid.Row="17" x:Name="tbPrepayment" Margin="0,0,1,16.92" Grid.RowSpan="2" />
                     <!--AMOUNT DUE-->
-                    <TextBlock Grid.Column="0" Grid.Row="15" Text="AMOUNT DUE" Grid.ColumnSpan="2"/>
-                    <TextBox Grid.Column="2" Grid.Row="15" Grid.ColumnSpan="2"/>
-                    <TextBox Grid.Column="4" Grid.Row="15"/>
-                    <TextBox Grid.Column="5" Grid.Row="15"/>
-                    <!--CLIENTS SIGNATURE-->
-                    <TextBlock Grid.Column="0" Grid.Row="16" Text="CLIENTS SIGNATURE" Grid.ColumnSpan="2" Margin="0,0,5,0"/>
-                    <TextBox Grid.Column="2" Grid.ColumnSpan="4" Grid.Row="16"/>
+                    <TextBlock Grid.Column="0" Grid.Row="18" Text="AMOUNT DUE" Grid.ColumnSpan="2"/>
+                    <TextBox Grid.Column="2" Grid.ColumnSpan="4" Grid.Row="18" x:Name="tbAmountDue" Margin="0,0,1,17.88" Grid.RowSpan="2"/>
+                    <!--TOTAL CHARGES-->
+                    <TextBlock Grid.Column="0" Grid.Row="19" Text="TOTAL CHARGES" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+                    <TextBox Grid.Column="2" Grid.Row="19" Grid.ColumnSpan="4" x:Name="tbGrandTotal" Margin="0,0,0,-0.04"  />
                 </Grid>
             </Border>
         </Grid>

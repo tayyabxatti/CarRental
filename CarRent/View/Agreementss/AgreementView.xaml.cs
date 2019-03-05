@@ -91,5 +91,7 @@ namespace CarRent.View.Agreementss
             tbTimeUsed.Text = views.Reservation.Car.TotalTime.ToString();
             
         }
+
+    
     }
 }
