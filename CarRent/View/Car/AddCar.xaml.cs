@@ -29,7 +29,7 @@ namespace CarRent.View
         private void BtnInsert_Click(object sender, RoutedEventArgs e)
         {
             var totalKm = Int32.Parse(tbCarKmIn.Text) - Int32.Parse(tbCarKmOut.Text);
-            var totalTime = tbTImeIn.Value - tbTimeOut.Value;
+            var totalTime = DateTime.Parse(tbTImeIn.Value.Value.ToLongTimeString()) - DateTime.Parse(tbTimeOut.Value.Value.ToLongTimeString());
             string carowner = "";
             if(cbCarOwnerOwn.IsChecked == true)
             {
@@ -64,20 +64,20 @@ namespace CarRent.View
 
             Car car = new Car()
             {
-             
-            CarKmIn = Int32.Parse(tbCarKmIn.Text),
+                CarKmIn = Int32.Parse(tbCarKmIn.Text),
                 CarKmOut = Int32.Parse(tbCarKmOut.Text),
                 CarMake = tbCarMake.Text,
                 CarRegistrationNo = tbCarRegistrationNo.Text,
-                DateIn = tbDateIn.SelectedDate,
-                DateOut = tbDateOut.SelectedDate,
+                DateIn = tbDateIn.SelectedDate.Value.ToShortDateString(),
+                DateOut = tbDateOut.SelectedDate.Value.ToShortDateString(),
                 KmBill = Int32.Parse(tbKmBill.Text),
-                TImeIn = tbTImeIn.Value,
-                TimeOut = tbTimeOut.Value,
+                TImeIn = tbTImeIn.Value.Value.ToShortTimeString(),
+                TimeOut = tbTimeOut.Value.Value.ToShortTimeString(),
                 TimeBill = Int32.Parse(tbTimeBill.Text),
                 TotalKm = totalKm,
-                TotalTime = DateTime.Parse(totalTime.ToString()),
-                
+                TotalTime = Convert.ToInt16(totalTime.TotalHours),
+                CarFuelState = fuelstate,
+                CarOwner = carowner,
             };
             _db.Cars.Add(car);
             _db.SaveChanges();

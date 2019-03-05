@@ -33,12 +33,12 @@ namespace CarRent.View
                tbCarKmIn.Text = updateCar.CarKmIn.ToString(); 
                tbCarKmOut.Text =updateCar.CarKmOut.ToString();
                tbCarMake.Text = updateCar.CarMake;    
-               tbCarRegistrationNo.Text=updateCar.CarRegistrationNo;    
-               tbDateIn.SelectedDate = updateCar.DateIn;    
-               tbDateOut.SelectedDate = updateCar.DateOut;    
+               tbCarRegistrationNo.Text=updateCar.CarRegistrationNo;
+                tbDateIn.SelectedDate = DateTime.Parse(updateCar.DateIn);    
+               tbDateOut.SelectedDate = DateTime.Parse(updateCar.DateOut);    
                tbKmBill.Text = updateCar.KmBill.ToString();
-               tbTImeIn.Value = updateCar.TImeIn;    
-               tbTimeOut.Value = updateCar.TimeOut;   
+               tbTImeIn.Value = DateTime.Parse(updateCar.TImeIn);    
+               tbTimeOut.Value = DateTime.Parse(updateCar.TimeOut);   
                tbTimeBill.Text = updateCar.TimeBill.ToString();
                tbTotalKm.Text = updateCar.TotalKm.ToString();
                tbTotalTime.Text=updateCar.TotalTime.ToString();
@@ -79,18 +79,21 @@ namespace CarRent.View
         private void BtnUpdate_Click(object sender, RoutedEventArgs e)
         {
             Car updateCar = (from c in _db.Cars where c.CarId == Id select c).SingleOrDefault();
+            var totalKm = Int32.Parse(tbCarKmIn.Text) - Int32.Parse(tbCarKmOut.Text);
+            var totalTime = DateTime.Parse(tbTImeIn.Value.Value.ToLongTimeString()) - DateTime.Parse(tbTimeOut.Value.Value.ToLongTimeString());
+
             updateCar.CarKmIn = Int32.Parse(tbCarKmIn.Text);
             updateCar.CarKmOut =Int32.Parse(tbCarKmOut.Text);
             updateCar.CarMake = tbCarMake.Text;
             updateCar.CarRegistrationNo = tbCarRegistrationNo.Text;
-            updateCar.DateIn = tbDateIn.SelectedDate;
-            updateCar.DateOut = tbDateOut.SelectedDate;
+            updateCar.DateIn = tbDateIn.SelectedDate.Value.ToShortDateString();
+            updateCar.DateOut =tbDateOut.SelectedDate.Value.ToShortDateString();
             updateCar.KmBill = Int32.Parse(tbKmBill.Text);
-            updateCar.TImeIn = tbTImeIn.Value;
-            updateCar.TimeOut = tbTimeOut.Value;
+            updateCar.TImeIn = tbTImeIn.Value.Value.ToShortTimeString();
+            updateCar.TimeOut = tbTimeOut.Value.Value.ToShortTimeString();
             updateCar.TimeBill = Int32.Parse(tbTimeBill.Text);
-            updateCar.TotalKm = Int32.Parse(tbTotalKm.Text);
-            updateCar.TotalTime = DateTime.Parse(tbTotalTime.Text);            
+            updateCar.TotalKm = totalKm;
+            updateCar.TotalTime = Convert.ToInt16(totalTime.TotalHours.ToString());            
 
             if (updateCar.CarOwner == "Own")
             {

@@ -31,12 +31,12 @@
           <Property Name="CarKmIn" Type="int" />
           <Property Name="TotalKm" Type="int" />
           <Property Name="KmBill" Type="int" />
-          <Property Name="TimeOut" Type="datetime" />
-          <Property Name="TImeIn" Type="datetime" />
+          <Property Name="TimeOut" Type="varchar" MaxLength="50" />
+          <Property Name="TImeIn" Type="varchar" MaxLength="50" />
           <Property Name="TimeBill" Type="int" />
-          <Property Name="TotalTime" Type="datetime" />
-          <Property Name="DateOut" Type="datetime" />
-          <Property Name="DateIn" Type="datetime" />
+          <Property Name="TotalTime" Type="int" />
+          <Property Name="DateOut" Type="varchar" MaxLength="50" />
+          <Property Name="DateIn" Type="varchar" MaxLength="50" />
           <Property Name="CarOwner" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Client">
@@ -204,12 +204,12 @@
           <Property Name="CarKmIn" Type="Int32" />
           <Property Name="TotalKm" Type="Int32" />
           <Property Name="KmBill" Type="Int32" />
-          <Property Name="TimeOut" Type="DateTime" Precision="3" />
-          <Property Name="TImeIn" Type="DateTime" Precision="3" />
+          <Property Name="TimeOut" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TImeIn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="TimeBill" Type="Int32" />
-          <Property Name="TotalTime" Type="DateTime" Precision="3" />
-          <Property Name="DateOut" Type="DateTime" Precision="3" />
-          <Property Name="DateIn" Type="DateTime" Precision="3" />
+          <Property Name="TotalTime" Type="Int32" />
+          <Property Name="DateOut" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateIn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CarOwner" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Reservations" Relationship="Self.FK_Reservation_Car" FromRole="Car" ToRole="Reservation" />
         </EntityType>

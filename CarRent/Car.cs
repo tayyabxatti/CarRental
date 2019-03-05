@@ -28,12 +28,12 @@ namespace CarRent
         public Nullable<int> CarKmIn { get; set; }
         public Nullable<int> TotalKm { get; set; }
         public Nullable<int> KmBill { get; set; }
-        public Nullable<System.DateTime> TimeOut { get; set; }
-        public Nullable<System.DateTime> TImeIn { get; set; }
+        public string TimeOut { get; set; }
+        public string TImeIn { get; set; }
         public Nullable<int> TimeBill { get; set; }
-        public Nullable<System.DateTime> TotalTime { get; set; }
-        public Nullable<System.DateTime> DateOut { get; set; }
-        public Nullable<System.DateTime> DateIn { get; set; }
+        public Nullable<int> TotalTime { get; set; }
+        public string DateOut { get; set; }
+        public string DateIn { get; set; }
         public string CarOwner { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
