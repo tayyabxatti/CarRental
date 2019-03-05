@@ -34,15 +34,13 @@ namespace CarRent.View
                tbCarKmOut.Text =updateCar.CarKmOut.ToString();
                tbCarMake.Text = updateCar.CarMake;    
                tbCarRegistrationNo.Text=updateCar.CarRegistrationNo;
-                tbDateIn.SelectedDate = DateTime.Parse(updateCar.DateIn);    
-               tbDateOut.SelectedDate = DateTime.Parse(updateCar.DateOut);    
-               tbKmBill.Text = updateCar.KmBill.ToString();
+                tbDateIn.SelectedDate = DateTime.Parse(updateCar.DateIn);
+            tbDateOut.SelectedDate = DateTime.Parse(updateCar.DateOut);
+            tbKmBill.Text = updateCar.KmBill.ToString();
                tbTImeIn.Value = DateTime.Parse(updateCar.TImeIn);    
                tbTimeOut.Value = DateTime.Parse(updateCar.TimeOut);   
                tbTimeBill.Text = updateCar.TimeBill.ToString();
-               tbTotalKm.Text = updateCar.TotalKm.ToString();
-               tbTotalTime.Text=updateCar.TotalTime.ToString();
-           
+               
             if(updateCar.CarOwner == "Own")
             {
                 cbCarOwnerOwn.IsChecked = true;

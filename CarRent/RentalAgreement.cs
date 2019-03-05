@@ -16,11 +16,15 @@ namespace CarRent
     {
         public int RentalAgreementId { get; set; }
         public string AcutalItinerary { get; set; }
-        public Nullable<int> BasicChargesId { get; set; }
         public Nullable<int> ReservationId { get; set; }
-        public Nullable<int> CarId { get; set; }
+        public Nullable<int> HPkr { get; set; }
+        public Nullable<int> KPkr { get; set; }
+        public Nullable<int> DPkr { get; set; }
+        public Nullable<int> TollTaxCharges { get; set; }
+        public Nullable<int> GST { get; set; }
+        public Nullable<int> DriverCharges { get; set; }
+        public Nullable<int> TotalCharges { get; set; }
     
-        public virtual BasicCharge BasicCharge { get; set; }
         public virtual Reservation Reservation { get; set; }
     }
 }

@@ -5,20 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="carRentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="BasicCharges">
-          <Key>
-            <PropertyRef Name="BasicChargesId" />
-          </Key>
-          <Property Name="BasicChargesId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="HPkr" Type="int" />
-          <Property Name="KPkr" Type="int" />
-          <Property Name="DPkr" Type="int" />
-          <Property Name="TollTaxCharges" Type="int" />
-          <Property Name="DamageIfAny" Type="int" />
-          <Property Name="GST" Type="int" />
-          <Property Name="DriverCharges" Type="int" />
-          <Property Name="TotalCharges" Type="int" />
-        </EntityType>
         <EntityType Name="Car">
           <Key>
             <PropertyRef Name="CarId" />
@@ -62,9 +48,14 @@
           </Key>
           <Property Name="RentalAgreementId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="AcutalItinerary" Type="varchar" MaxLength="50" />
-          <Property Name="BasicChargesId" Type="int" />
           <Property Name="ReservationId" Type="int" />
-          <Property Name="CarId" Type="int" />
+          <Property Name="HPkr" Type="int" />
+          <Property Name="KPkr" Type="int" />
+          <Property Name="DPkr" Type="int" />
+          <Property Name="TollTaxCharges" Type="int" />
+          <Property Name="GST" Type="int" />
+          <Property Name="DriverCharges" Type="int" />
+          <Property Name="TotalCharges" Type="int" />
         </EntityType>
         <EntityType Name="Reservation">
           <Key>
@@ -84,18 +75,6 @@
           <Property Name="DriverId" Type="int" />
           <Property Name="CheckInStation" Type="varchar" MaxLength="50" />
         </EntityType>
-        <Association Name="FK_RentalAgreement_BasicCharges">
-          <End Role="BasicCharges" Type="Self.BasicCharges" Multiplicity="0..1" />
-          <End Role="RentalAgreement" Type="Self.RentalAgreement" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BasicCharges">
-              <PropertyRef Name="BasicChargesId" />
-            </Principal>
-            <Dependent Role="RentalAgreement">
-              <PropertyRef Name="BasicChargesId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_RentalAgreement_Reservation">
           <End Role="Reservation" Type="Self.Reservation" Multiplicity="0..1" />
           <End Role="RentalAgreement" Type="Self.RentalAgreement" Multiplicity="*" />
@@ -145,16 +124,11 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="carRentModelStoreContainer">
-          <EntitySet Name="BasicCharges" EntityType="Self.BasicCharges" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Car" EntityType="Self.Car" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Driver" EntityType="Self.Driver" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RentalAgreement" EntityType="Self.RentalAgreement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_RentalAgreement_BasicCharges" Association="Self.FK_RentalAgreement_BasicCharges">
-            <End Role="BasicCharges" EntitySet="BasicCharges" />
-            <End Role="RentalAgreement" EntitySet="RentalAgreement" />
-          </AssociationSet>
           <AssociationSet Name="FK_RentalAgreement_Reservation" Association="Self.FK_RentalAgreement_Reservation">
             <End Role="Reservation" EntitySet="Reservation" />
             <End Role="RentalAgreement" EntitySet="RentalAgreement" />
@@ -177,21 +151,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="carRentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="BasicCharge">
-          <Key>
-            <PropertyRef Name="BasicChargesId" />
-          </Key>
-          <Property Name="BasicChargesId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="HPkr" Type="Int32" />
-          <Property Name="KPkr" Type="Int32" />
-          <Property Name="DPkr" Type="Int32" />
-          <Property Name="TollTaxCharges" Type="Int32" />
-          <Property Name="DamageIfAny" Type="Int32" />
-          <Property Name="GST" Type="Int32" />
-          <Property Name="DriverCharges" Type="Int32" />
-          <Property Name="TotalCharges" Type="Int32" />
-          <NavigationProperty Name="RentalAgreements" Relationship="Self.FK_RentalAgreement_BasicCharges" FromRole="BasicCharges" ToRole="RentalAgreement" />
-        </EntityType>
         <EntityType Name="Car">
           <Key>
             <PropertyRef Name="CarId" />
@@ -238,10 +197,14 @@
           </Key>
           <Property Name="RentalAgreementId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="AcutalItinerary" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BasicChargesId" Type="Int32" />
           <Property Name="ReservationId" Type="Int32" />
-          <Property Name="CarId" Type="Int32" />
-          <NavigationProperty Name="BasicCharge" Relationship="Self.FK_RentalAgreement_BasicCharges" FromRole="RentalAgreement" ToRole="BasicCharges" />
+          <Property Name="HPkr" Type="Int32" />
+          <Property Name="KPkr" Type="Int32" />
+          <Property Name="DPkr" Type="Int32" />
+          <Property Name="TollTaxCharges" Type="Int32" />
+          <Property Name="GST" Type="Int32" />
+          <Property Name="DriverCharges" Type="Int32" />
+          <Property Name="TotalCharges" Type="Int32" />
           <NavigationProperty Name="Reservation" Relationship="Self.FK_RentalAgreement_Reservation" FromRole="RentalAgreement" ToRole="Reservation" />
         </EntityType>
         <EntityType Name="Reservation">
@@ -266,18 +229,6 @@
           <NavigationProperty Name="Driver" Relationship="Self.FK_Reservation_Driver" FromRole="Reservation" ToRole="Driver" />
           <NavigationProperty Name="RentalAgreements" Relationship="Self.FK_RentalAgreement_Reservation" FromRole="Reservation" ToRole="RentalAgreement" />
         </EntityType>
-        <Association Name="FK_RentalAgreement_BasicCharges">
-          <End Role="BasicCharges" Type="Self.BasicCharge" Multiplicity="0..1" />
-          <End Role="RentalAgreement" Type="Self.RentalAgreement" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BasicCharges">
-              <PropertyRef Name="BasicChargesId" />
-            </Principal>
-            <Dependent Role="RentalAgreement">
-              <PropertyRef Name="BasicChargesId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Reservation_Car">
           <End Role="Car" Type="Self.Car" Multiplicity="0..1" />
           <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
@@ -327,16 +278,11 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="carRentEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="BasicCharges" EntityType="Self.BasicCharge" />
           <EntitySet Name="Cars" EntityType="Self.Car" />
           <EntitySet Name="Clients" EntityType="Self.Client" />
           <EntitySet Name="Drivers" EntityType="Self.Driver" />
           <EntitySet Name="RentalAgreements" EntityType="Self.RentalAgreement" />
           <EntitySet Name="Reservations" EntityType="Self.Reservation" />
-          <AssociationSet Name="FK_RentalAgreement_BasicCharges" Association="Self.FK_RentalAgreement_BasicCharges">
-            <End Role="BasicCharges" EntitySet="BasicCharges" />
-            <End Role="RentalAgreement" EntitySet="RentalAgreements" />
-          </AssociationSet>
           <AssociationSet Name="FK_Reservation_Car" Association="Self.FK_Reservation_Car">
             <End Role="Car" EntitySet="Cars" />
             <End Role="Reservation" EntitySet="Reservations" />
@@ -360,21 +306,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="carRentModelStoreContainer" CdmEntityContainer="carRentEntities">
-          <EntitySetMapping Name="BasicCharges">
-            <EntityTypeMapping TypeName="carRentModel.BasicCharge">
-              <MappingFragment StoreEntitySet="BasicCharges">
-                <ScalarProperty Name="BasicChargesId" ColumnName="BasicChargesId" />
-                <ScalarProperty Name="HPkr" ColumnName="HPkr" />
-                <ScalarProperty Name="KPkr" ColumnName="KPkr" />
-                <ScalarProperty Name="DPkr" ColumnName="DPkr" />
-                <ScalarProperty Name="TollTaxCharges" ColumnName="TollTaxCharges" />
-                <ScalarProperty Name="DamageIfAny" ColumnName="DamageIfAny" />
-                <ScalarProperty Name="GST" ColumnName="GST" />
-                <ScalarProperty Name="DriverCharges" ColumnName="DriverCharges" />
-                <ScalarProperty Name="TotalCharges" ColumnName="TotalCharges" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Cars">
             <EntityTypeMapping TypeName="carRentModel.Car">
               <MappingFragment StoreEntitySet="Car">
@@ -420,9 +351,14 @@
               <MappingFragment StoreEntitySet="RentalAgreement">
                 <ScalarProperty Name="RentalAgreementId" ColumnName="RentalAgreementId" />
                 <ScalarProperty Name="AcutalItinerary" ColumnName="AcutalItinerary" />
-                <ScalarProperty Name="BasicChargesId" ColumnName="BasicChargesId" />
                 <ScalarProperty Name="ReservationId" ColumnName="ReservationId" />
-                <ScalarProperty Name="CarId" ColumnName="CarId" />
+                <ScalarProperty Name="HPkr" ColumnName="HPkr" />
+                <ScalarProperty Name="KPkr" ColumnName="KPkr" />
+                <ScalarProperty Name="DPkr" ColumnName="DPkr" />
+                <ScalarProperty Name="TollTaxCharges" ColumnName="TollTaxCharges" />
+                <ScalarProperty Name="GST" ColumnName="GST" />
+                <ScalarProperty Name="DriverCharges" ColumnName="DriverCharges" />
+                <ScalarProperty Name="TotalCharges" ColumnName="TotalCharges" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

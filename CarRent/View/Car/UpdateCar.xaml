@@ -56,9 +56,6 @@
             <!--CarKmIn-->
             <TextBlock Grid.Column="0" Grid.Row="5" Text="CarKmIn" />
             <TextBox x:Name = "tbCarKmIn" Grid.Row="5" Grid.Column="1" />
-            <!--TotalKm-->
-            <TextBlock Grid.Column="0" Grid.Row="6" Text="TotalKm" />
-            <TextBox x:Name = "tbTotalKm" Grid.Row="6" Grid.Column="1" />
             <!--KmBill-->
             <TextBlock Grid.Column="0" Grid.Row="7" Text="KmBill" />
             <TextBox x:Name = "tbKmBill" Grid.Row="7" Grid.Column="1" />
@@ -71,9 +68,6 @@
             <!--TimeBill-->
             <TextBlock Grid.Column="0" Grid.Row="10" Text="TimeBill" />
             <TextBox x:Name = "tbTimeBill" Grid.Row="10" Grid.Column="1" />
-            <!--TotalTime-->
-            <TextBlock Grid.Column="0" Grid.Row="11" Text="TotalTime" />
-            <TextBox x:Name = "tbTotalTime" Grid.Row="11" Grid.Column="1" />
             <!--DateOut-->
             <TextBlock Grid.Column="0"  Grid.Row="12" Text="DateOut" />
             <DatePicker x:Name = "tbDateOut" Grid.Row="12" Grid.Column="1" />
