@@ -215,5 +215,13 @@
                 </Grid>
             </Border>
         </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btnCloseRental" Grid.Column="0" Content="Close Rental" Click="BtnCloseRental_Click"/>
+            <Button x:Name="btnCalculateCharges" Grid.Column="1" Content="Calculate Charges" Click="BtnCalculateCharges_Click"/>
+        </Grid>
     </StackPanel>
 </Window>

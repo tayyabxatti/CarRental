@@ -33,6 +33,8 @@ namespace CarRent.View.Agreementss
         {
             //like update 
             var views = (from r in _db.RentalAgreements where r.RentalAgreementId == Id select r).SingleOrDefault();
+            var kmpkr = views.Reservation.Car.TotalKm * views.Reservation.Car.KmBill;
+            var kpkr = views.Reservation.Car.TotalTime * views.Reservation.Car.TimeBill;
             tbInvoiceNo.Text = views.RentalAgreementId.ToString();
             tbBillingAddress.Text = views.Reservation.BillingAddress;
             tbCarName.Text = views.Reservation.Car.CarMake;
@@ -45,6 +47,14 @@ namespace CarRent.View.Agreementss
             tbKmsDriven.Text = views.Reservation.Car.TotalKm.ToString();
             tbKmsIn.Text = views.Reservation.Car.CarKmIn.ToString();
             tbKmsOut.Text = views.Reservation.Car.CarKmOut.ToString();
+            tbHr.Text = views.Reservation.Car.TotalTime.ToString();
+            tbKms.Text = views.Reservation.Car.TotalKm.ToString();
+            tbkmsRs.Text = kmpkr.ToString();
+            tbhrRs.Text = kpkr.ToString();
+            //DriverCharges
+            tbGst.Text = views.GST.ToString();
+            
+
             if(views.Reservation.MethodOfPayment=="Cash")
             {
                 tbMethodOdPaymentCash.IsChecked = true;

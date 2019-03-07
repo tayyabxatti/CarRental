@@ -142,7 +142,7 @@ namespace CarRent.View
             RentalAgreement rentalAgreement = new RentalAgreement()
             {
                ReservationId = reservation.ReservationId,
-               CarId = reservation.CarId,
+               
                
                
             };
