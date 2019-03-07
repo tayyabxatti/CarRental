@@ -51,6 +51,10 @@ namespace CarRent.View.Agreementss
             tbhrRs.Text = kpkr.ToString();
             //DriverCharges
             tbGst.Text = views.GST.ToString();
+            tbActualItienrary.Text = views.AcutalItinerary;
+            tbAmountDue.Text = views.AmountDue.ToString();
+            tbFuel.Text = views.AgreementFuel.ToString();
+            tbGrandTotal.Text = views.TotalCharges.ToString();
 
 
             if (views.Reservation.MethodOfPayment == "Cash")
@@ -148,7 +152,24 @@ namespace CarRent.View.Agreementss
 
         private void BtnCloseRental_Click(object sender, RoutedEventArgs e)
         {
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Are you sure you want to close this Rental?", "Close Rental", System.Windows.MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                var views = (from r in _db.RentalAgreements where r.RentalAgreementId == Id select r).SingleOrDefault();
+                views.AgreementClosed = "Closed";
+                views.HPkr = Convert.ToInt32(tbhrRs.Text);
+                views.KPkr = Convert.ToInt32(tbkmsRs.Text);
+                views.GST = Convert.ToInt32(tbGst.Text);
+                views.AgreementFuel = Convert.ToInt32(tbFuel.Text);
+                views.TollTaxCharges = Convert.ToInt32(tbToolTax.Text);
+                views.DriverCharges = Convert.ToInt32(tbDriverNight.Text);
+                views.PrePaymen = Convert.ToInt32(tbPrepayment.Text);
+                views.AmountDue = Convert.ToInt32(tbAmountDue.Text);
+                views.TotalCharges = Convert.ToInt32(tbGrandTotal.Text);
+                views.AcutalItinerary = tbActualItienrary.Text;
+                    _db.SaveChanges();
 
+            }
+            }
         }
     }
-}

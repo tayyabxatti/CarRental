@@ -99,7 +99,7 @@
                         <TextBox AcceptsReturn="True" TextWrapping="Wrap" Grid.Row="10" Grid.Column="1" x:Name="tbPickUpAddressOrFlightNo" Grid.RowSpan="3" Grid.ColumnSpan="3" Margin="67,0,0,0"/>
                         <!--ACTUAL ITINERARY-->
                         <TextBlock Grid.Row="11" Grid.Column="0" Text="ACTUAL ITINERARY" />
-                        <TextBox AcceptsReturn="True" TextWrapping="Wrap" Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="3" x:Name="ActualItienrary" Margin="67,0,0,0"/>
+                        <TextBox AcceptsReturn="True" TextWrapping="Wrap" Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="3" x:Name="tbActualItienrary" Margin="67,0,0,0"/>
                     </Grid>
                 </StackPanel>
             </Border>

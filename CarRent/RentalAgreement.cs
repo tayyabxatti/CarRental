@@ -24,6 +24,10 @@ namespace CarRent
         public Nullable<int> GST { get; set; }
         public Nullable<int> DriverCharges { get; set; }
         public Nullable<int> TotalCharges { get; set; }
+        public string AgreementClosed { get; set; }
+        public Nullable<int> AgreementFuel { get; set; }
+        public Nullable<int> PrePaymen { get; set; }
+        public Nullable<int> AmountDue { get; set; }
     
         public virtual Reservation Reservation { get; set; }
     }

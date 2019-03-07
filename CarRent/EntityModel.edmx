@@ -56,6 +56,10 @@
           <Property Name="GST" Type="int" />
           <Property Name="DriverCharges" Type="int" />
           <Property Name="TotalCharges" Type="int" />
+          <Property Name="AgreementClosed" Type="varchar" MaxLength="50" />
+          <Property Name="AgreementFuel" Type="int" />
+          <Property Name="PrePaymen" Type="int" />
+          <Property Name="AmountDue" Type="int" />
         </EntityType>
         <EntityType Name="Reservation">
           <Key>
@@ -205,6 +209,10 @@
           <Property Name="GST" Type="Int32" />
           <Property Name="DriverCharges" Type="Int32" />
           <Property Name="TotalCharges" Type="Int32" />
+          <Property Name="AgreementClosed" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AgreementFuel" Type="Int32" />
+          <Property Name="PrePaymen" Type="Int32" />
+          <Property Name="AmountDue" Type="Int32" />
           <NavigationProperty Name="Reservation" Relationship="Self.FK_RentalAgreement_Reservation" FromRole="RentalAgreement" ToRole="Reservation" />
         </EntityType>
         <EntityType Name="Reservation">
@@ -359,6 +367,10 @@
                 <ScalarProperty Name="GST" ColumnName="GST" />
                 <ScalarProperty Name="DriverCharges" ColumnName="DriverCharges" />
                 <ScalarProperty Name="TotalCharges" ColumnName="TotalCharges" />
+                <ScalarProperty Name="AgreementClosed" ColumnName="AgreementClosed" />
+                <ScalarProperty Name="AgreementFuel" ColumnName="AgreementFuel" />
+                <ScalarProperty Name="PrePaymen" ColumnName="PrePaymen" />
+                <ScalarProperty Name="AmountDue" ColumnName="AmountDue" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
