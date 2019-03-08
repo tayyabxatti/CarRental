@@ -28,6 +28,14 @@ namespace CarRent
         public Nullable<int> AgreementFuel { get; set; }
         public Nullable<int> PrePaymen { get; set; }
         public Nullable<int> AmountDue { get; set; }
+        public Nullable<int> AgreementKmOut { get; set; }
+        public Nullable<int> AgreementKmIn { get; set; }
+        public Nullable<int> AgreementTotalKm { get; set; }
+        public string AgreementTimeOut { get; set; }
+        public string AgreementTimeIn { get; set; }
+        public Nullable<int> AgreementTotalTime { get; set; }
+        public string AgreementDateOut { get; set; }
+        public string AgreementDateIn { get; set; }
     
         public virtual Reservation Reservation { get; set; }
     }

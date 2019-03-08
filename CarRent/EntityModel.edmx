@@ -60,6 +60,14 @@
           <Property Name="AgreementFuel" Type="int" />
           <Property Name="PrePaymen" Type="int" />
           <Property Name="AmountDue" Type="int" />
+          <Property Name="AgreementKmOut" Type="int" />
+          <Property Name="AgreementKmIn" Type="int" />
+          <Property Name="AgreementTotalKm" Type="int" />
+          <Property Name="AgreementTimeOut" Type="varchar" MaxLength="50" />
+          <Property Name="AgreementTimeIn" Type="varchar" MaxLength="50" />
+          <Property Name="AgreementTotalTime" Type="int" />
+          <Property Name="AgreementDateOut" Type="varchar" MaxLength="50" />
+          <Property Name="AgreementDateIn" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Reservation">
           <Key>
@@ -213,6 +221,14 @@
           <Property Name="AgreementFuel" Type="Int32" />
           <Property Name="PrePaymen" Type="Int32" />
           <Property Name="AmountDue" Type="Int32" />
+          <Property Name="AgreementKmOut" Type="Int32" />
+          <Property Name="AgreementKmIn" Type="Int32" />
+          <Property Name="AgreementTotalKm" Type="Int32" />
+          <Property Name="AgreementTimeOut" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AgreementTimeIn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AgreementTotalTime" Type="Int32" />
+          <Property Name="AgreementDateOut" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AgreementDateIn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Reservation" Relationship="Self.FK_RentalAgreement_Reservation" FromRole="RentalAgreement" ToRole="Reservation" />
         </EntityType>
         <EntityType Name="Reservation">
@@ -371,6 +387,14 @@
                 <ScalarProperty Name="AgreementFuel" ColumnName="AgreementFuel" />
                 <ScalarProperty Name="PrePaymen" ColumnName="PrePaymen" />
                 <ScalarProperty Name="AmountDue" ColumnName="AmountDue" />
+                <ScalarProperty Name="AgreementKmOut" ColumnName="AgreementKmOut" />
+                <ScalarProperty Name="AgreementKmIn" ColumnName="AgreementKmIn" />
+                <ScalarProperty Name="AgreementTotalKm" ColumnName="AgreementTotalKm" />
+                <ScalarProperty Name="AgreementTimeOut" ColumnName="AgreementTimeOut" />
+                <ScalarProperty Name="AgreementTimeIn" ColumnName="AgreementTimeIn" />
+                <ScalarProperty Name="AgreementTotalTime" ColumnName="AgreementTotalTime" />
+                <ScalarProperty Name="AgreementDateOut" ColumnName="AgreementDateOut" />
+                <ScalarProperty Name="AgreementDateIn" ColumnName="AgreementDateIn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

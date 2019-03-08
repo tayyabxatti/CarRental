@@ -39,12 +39,7 @@ namespace CarRent.View.Agreementss
             tbCarRegistrationNo.Text = views.Reservation.Car.CarRegistrationNo;
             tbClientContactNo.Text = views.Reservation.Client.ClientContactNo;
             tbClientName.Text = views.Reservation.Client.ClientName;
-            tbDateIn.Text = views.Reservation.Car.DateIn.ToString();
-            tbDateOut.Text = views.Reservation.Car.DateOut.ToString();
             tbDriverName.Text = views.Reservation.Driver.DriverName.ToString();
-            tbKmsDriven.Text = views.Reservation.Car.TotalKm.ToString();
-            tbKmsIn.Text = views.Reservation.Car.CarKmIn.ToString();
-            tbKmsOut.Text = views.Reservation.Car.CarKmOut.ToString();
             tbHr.Text = views.Reservation.Car.TotalTime.ToString();
             tbKms.Text = views.Reservation.Car.TotalKm.ToString();
             tbkmsRs.Text = kmpkr.ToString();
@@ -98,9 +93,29 @@ namespace CarRent.View.Agreementss
             tbPickUpAddressOrFlightNo.Text = views.Reservation.Client.ClientPickUpAddress.ToString();
             tbReservationDateTime.Text = views.Reservation.ReservationDateTime.ToString();
             tbReservationNo.Text = views.Reservation.ReservationId.ToString();
+            if(views.AgreementClosed != "Closed") { 
             tbTimeIn.Text = views.Reservation.Car.TImeIn.ToString();
             tbTimeOut.Text = views.Reservation.Car.TimeOut.ToString();
             tbTimeUsed.Text = views.Reservation.Car.TotalTime.ToString();
+            tbDateIn.Text = views.Reservation.Car.DateIn.ToString();
+            tbDateOut.Text = views.Reservation.Car.DateOut.ToString();
+            tbKmsDriven.Text = views.Reservation.Car.TotalKm.ToString();
+            tbKmsIn.Text = views.Reservation.Car.CarKmIn.ToString();
+            tbKmsOut.Text = views.Reservation.Car.CarKmOut.ToString();
+            }
+            else
+            {
+                tbTimeIn.Text = views.AgreementTimeIn.ToString();
+                tbTimeOut.Text = views.AgreementTimeOut.ToString();
+                tbTimeUsed.Text = views.AgreementTotalTime.ToString();
+                tbDateIn.Text = views.AgreementDateIn.ToString();
+                tbDateOut.Text = views.AgreementDateOut.ToString();
+                tbKmsDriven.Text = views.AgreementTotalKm.ToString();
+                tbKmsIn.Text = views.AgreementKmIn.ToString();
+                tbKmsOut.Text = views.AgreementKmOut.ToString();
+
+            }
+
         }
 
         private void BtnCalculateCharges_Click(object sender, RoutedEventArgs e)
@@ -167,7 +182,19 @@ namespace CarRent.View.Agreementss
                 views.AmountDue = Convert.ToInt32(tbAmountDue.Text);
                 views.TotalCharges = Convert.ToInt32(tbGrandTotal.Text);
                 views.AcutalItinerary = tbActualItienrary.Text;
-                    _db.SaveChanges();
+                views.AgreementDateIn = tbDateIn.Text;
+                views.AgreementDateOut = tbDateOut.Text;
+                views.AgreementTimeIn = tbTimeIn.Text;
+                views.AgreementTimeOut = tbTimeOut.Text;
+                views.AgreementKmOut = Convert.ToInt32(tbKmsOut.Text);
+                views.AgreementKmIn = Convert.ToInt32(tbKmsIn.Text);
+                views.AgreementTotalKm = Convert.ToInt32(tbKms.Text);
+                views.AgreementTotalTime = Convert.ToInt32(tbHr.Text);
+                views.Reservation.Car.CarKmIn = Convert.ToInt32(tbKmsOut.Text);
+                views.Reservation.Car.DateIn = tbDateOut.Text;
+                views.Reservation.Car.TImeIn = tbTimeOut.Text;
+
+                _db.SaveChanges();
 
             }
             }
