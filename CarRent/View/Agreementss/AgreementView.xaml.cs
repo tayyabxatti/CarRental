@@ -100,6 +100,7 @@ namespace CarRent.View.Agreementss
             tbTimeOut.Text = views.Reservation.Car.TimeOut.ToString();
             tbTimeUsed.Text = views.Reservation.Car.TotalTime.ToString();
             
+            
         }
 
     

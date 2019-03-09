@@ -1,5 +1,8 @@
-﻿using System;
+﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -93,15 +96,16 @@ namespace CarRent.View.Agreementss
             tbPickUpAddressOrFlightNo.Text = views.Reservation.Client.ClientPickUpAddress.ToString();
             tbReservationDateTime.Text = views.Reservation.ReservationDateTime.ToString();
             tbReservationNo.Text = views.Reservation.ReservationId.ToString();
-            if(views.AgreementClosed != "Closed") { 
-            tbTimeIn.Text = views.Reservation.Car.TImeIn.ToString();
-            tbTimeOut.Text = views.Reservation.Car.TimeOut.ToString();
-            tbTimeUsed.Text = views.Reservation.Car.TotalTime.ToString();
-            tbDateIn.Text = views.Reservation.Car.DateIn.ToString();
-            tbDateOut.Text = views.Reservation.Car.DateOut.ToString();
-            tbKmsDriven.Text = views.Reservation.Car.TotalKm.ToString();
-            tbKmsIn.Text = views.Reservation.Car.CarKmIn.ToString();
-            tbKmsOut.Text = views.Reservation.Car.CarKmOut.ToString();
+            if (views.AgreementClosed != "Closed")
+            {
+                tbTimeIn.Text = views.Reservation.Car.TImeIn.ToString();
+                tbTimeOut.Text = views.Reservation.Car.TimeOut.ToString();
+                tbTimeUsed.Text = views.Reservation.Car.TotalTime.ToString();
+                tbDateIn.Text = views.Reservation.Car.DateIn.ToString();
+                tbDateOut.Text = views.Reservation.Car.DateOut.ToString();
+                tbKmsDriven.Text = views.Reservation.Car.TotalKm.ToString();
+                tbKmsIn.Text = views.Reservation.Car.CarKmIn.ToString();
+                tbKmsOut.Text = views.Reservation.Car.CarKmOut.ToString();
             }
             else
             {
@@ -120,7 +124,7 @@ namespace CarRent.View.Agreementss
 
         private void BtnCalculateCharges_Click(object sender, RoutedEventArgs e)
         {
-            if(tbFuel.Text =="")
+            if (tbFuel.Text == "")
             {
                 tbFuel.Text = "0";
             }
@@ -128,7 +132,7 @@ namespace CarRent.View.Agreementss
             {
                 tbDriverNight.Text = "0";
             }
-            if(tbPrepayment.Text=="")
+            if (tbPrepayment.Text == "")
             {
                 tbPrepayment.Text = "0";
             }
@@ -144,7 +148,6 @@ namespace CarRent.View.Agreementss
             {
                 tbAmountDue.Text = "0";
             }
-
             if (tbDailyCharges.Text == "")
             {
                 int subTotal = Convert.ToInt32(tbMonthlyCharges.Text) + Convert.ToInt32(tbhrRs.Text) + Convert.ToInt32(tbkmsRs.Text);
@@ -152,9 +155,10 @@ namespace CarRent.View.Agreementss
                 int grandTotal = Convert.ToInt32(tbPrepayment.Text) + Convert.ToInt32(tbAmountDue.Text);
                 tbSubTotal.Text = subTotal.ToString();
                 tbTotal.Text = (subTotal + total).ToString();
-                tbGrandTotal.Text = (subTotal +total +grandTotal).ToString();
+                tbGrandTotal.Text = (subTotal + total + grandTotal).ToString();
+
             }
-            else if(tbMonthlyCharges.Text == "")
+            else if (tbMonthlyCharges.Text == "")
             {
                 int subTotal = Convert.ToInt32(tbDailyCharges.Text) + Convert.ToInt32(tbhrRs.Text) + Convert.ToInt32(tbkmsRs.Text);
                 int total = Convert.ToInt32(tbFuel.Text) + Convert.ToInt32(tbToolTax.Text) + Convert.ToInt32(tbDriverNight.Text);
@@ -197,6 +201,58 @@ namespace CarRent.View.Agreementss
                 _db.SaveChanges();
 
             }
-            }
         }
+
+        private void TbKmsDriven_IsMouseCapturedChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            var views = (from r in _db.RentalAgreements where r.RentalAgreementId == Id select r).SingleOrDefault();
+            var totalKm = Int32.Parse(tbKmsIn.Text) - Int32.Parse(tbKmsOut.Text);
+            tbKmsDriven.Text = totalKm.ToString();
+        }
+
+        private void TbTimeUsed_IsMouseCapturedChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            var totalTime = DateTime.Parse(tbTimeIn.Text) - DateTime.Parse(tbTimeOut.Text);
+            tbTimeUsed.Text = totalTime.Hours.ToString();
+        }
+
+        private void TbTotalDays_IsMouseCapturedChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            var totalDays = DateTime.Parse(tbDateOut.Text) - DateTime.Parse(tbDateIn.Text);
+            tbTotalDays.Text = totalDays.Days.ToString();
+        }
+        private void BtnPrint_Click(object sender, RoutedEventArgs e)
+        {
+            var views = (from r in _db.RentalAgreements where r.RentalAgreementId == Id select r).SingleOrDefault();
+
+
+            var PdfDOcument = new Document(PageSize.LETTER, 40f, 40f, 60f, 60f);
+            string path = $"d:\\name.pdf";
+            PdfWriter.GetInstance(PdfDOcument, new FileStream(path, FileMode.OpenOrCreate));
+            PdfDOcument.Open();
+            //var imagePath = "";
+            var spaceer = new iTextSharp.text.Paragraph("")
+            {
+                SpacingBefore = 10f,
+                SpacingAfter = 10f,
+            };
+            PdfDOcument.Add(spaceer);
+
+            var headerTable = new PdfPTable(new[] { .75f, 2f })
+            {
+                HorizontalAlignment = Convert.ToInt32(Left),
+                WidthPercentage = 75,
+                DefaultCell = { MinimumHeight = 22f }
+
+            };
+            headerTable.AddCell("CarMake");
+            headerTable.AddCell(views.Reservation.Car.CarMake);
+            headerTable.AddCell("CarModel");
+            headerTable.AddCell(views.Reservation.Car.CarRegistrationNo);
+            PdfDOcument.Add(headerTable);
+            PdfDOcument.Add(spaceer);
+            PdfDOcument.Close();
+        }
+
     }
+}
