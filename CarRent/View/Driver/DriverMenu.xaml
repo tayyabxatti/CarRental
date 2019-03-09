@@ -14,8 +14,8 @@
             </Grid.RowDefinitions>
             <DataGrid x:Name="DriverGrid" x:FieldModifier="public" IsReadOnly="True" AutoGenerateColumns="False" SelectedItem="{Binding CarId}"  Grid.Row="0" ColumnWidth="*">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="DriverId" Binding="{Binding DriverId}" />
-                    <DataGridTextColumn Header="DriverName" Binding="{Binding DriverName}"/>
+                    <DataGridTextColumn Header="DriverId" Binding="{Binding Id}" />
+                    <DataGridTextColumn Header="DriverName" Binding="{Binding Name}"/>
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.HeaderTemplate>
                             <DataTemplate>

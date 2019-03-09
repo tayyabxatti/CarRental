@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ApplicationDb.DbLogic;
+using Common.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +21,6 @@ namespace CarRent.View
     /// </summary>
     public partial class AddDriver : Window
     {
-        carRentEntities _db = new carRentEntities();
 
         public AddDriver()
         {
@@ -28,14 +29,17 @@ namespace CarRent.View
 
         private void BtnInsert_Click(object sender, RoutedEventArgs e)
         {
-            Driver driver = new Driver()
+            var response = DriverLogic.AddOrUpdate(new Common.ViewModel.DriverVM()
             {
-                DriverName = tbDriverName.Text,
-            };
-            _db.Drivers.Add(driver);
-            _db.SaveChanges();
-            DriverMenu.dataGrid.ItemsSource = _db.Drivers.ToList();
-            this.Hide();
+                Name = tbDriverName.Text
+            });
+            if (response.IsCompleted)
+            {
+                var listResponse = DriverLogic.List();
+                if (listResponse.IsCompleted)
+                DriverMenu.dataGrid.ItemsSource = listResponse.Object;
+                this.Hide();
+            }
         }
     }
 }

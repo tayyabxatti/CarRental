@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ApplicationDb.DbLogic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,29 +20,36 @@ namespace CarRent.View
     /// </summary>
     public partial class UpdateDriver : Window
     {
-        carRentEntities _db = new carRentEntities();
-        int Id;
+        private int _id;
         public UpdateDriver(int DriverId)
         {
             InitializeComponent();
-            Id = DriverId;
+            _id = DriverId;
             Load();
 
         }
         public void Load()
         {
 
-            var updateDriver = _db.Drivers.Where(d => d.DriverId == Id).SingleOrDefault();
-            tbDriverName.Text = updateDriver.DriverName;
+            var response = DriverLogic.Get(_id);
+            if (response.IsCompleted && response.Object != null)
+                tbDriverName.Text = response.Object.Name;
         }
 
         private void BtnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            var updateDriver = _db.Drivers.Where(d => d.DriverId == Id).SingleOrDefault();
-            updateDriver.DriverName= tbDriverName.Text;
-            _db.SaveChanges();
-            DriverMenu.dataGrid.ItemsSource = _db.Drivers.ToList();
-            this.Hide();
+            var response = DriverLogic.AddOrUpdate(new Common.ViewModel.DriverVM()
+            {
+                Id = _id,
+                Name = tbDriverName.Text
+            }, true);
+            if (response.IsCompleted)
+            {
+                var listResponse = DriverLogic.List();
+                if(listResponse.IsCompleted)
+                DriverMenu.dataGrid.ItemsSource = listResponse.Object;
+                this.Hide();
+            }
         }
     }
 }

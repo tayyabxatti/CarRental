@@ -293,5 +293,15 @@
       <LastGenOutput>EntityModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ApplicationDb\ApplicationDb.csproj">
+      <Project>{D34CD89A-5C94-49E5-8E2C-6C3D003C76DA}</Project>
+      <Name>ApplicationDb</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{3E023308-E33C-4C54-9CEA-6B1F67067242}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

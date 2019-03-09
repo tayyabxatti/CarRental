@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ApplicationDb.DbLogic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,7 +31,7 @@ namespace CarRent.View
         }
         private void Load()
         {
-            DriverGrid.ItemsSource = _db.Drivers.ToList();
+            DriverGrid.ItemsSource = DriverLogic.List().Object;
             dataGrid = DriverGrid;
         }
         private void BtnUpdate_Click(object sender, RoutedEventArgs e)

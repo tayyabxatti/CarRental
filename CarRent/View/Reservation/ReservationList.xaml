@@ -17,21 +17,11 @@
                     <DataGridTextColumn Header="ReservationId" Binding="{Binding ReservationId}" />
                     <DataGridTextColumn Header="RentingStation" Binding="{Binding RentingStation}"/>
                     <DataGridTextColumn Header="BookedAt" Binding="{Binding BookedAt}"/>
-                    <DataGridTextColumn Header="Car Make" Binding="{Binding Car.CarMake}"/>
                     <DataGridTextColumn Header="Car RegNo" Binding="{Binding Car.CarRegistrationNo}"/>
                     <DataGridTextColumn Header="Driver Name" Binding="{Binding Driver.DriverName}"/>
-                    <DataGridTextColumn Header="CheckIn Station" Binding="{Binding CheckInStation}"/>
                     <DataGridTextColumn Header="Client Name" Binding="{Binding Client.ClientName}"/>
-                    <DataGridTextColumn Header="Pick up Address" Binding="{Binding Client.ClientPickUpAddress}"/>
-                    <DataGridTextColumn Header="Method of Payment" Binding="{Binding MethodOfPayment}"/>
-                    <DataGridTextColumn Header="Billing Address" Binding="{Binding BillingAddress}"/>
-                    <DataGridTextColumn Header="Source" Binding="{Binding Source}"/>
                     <DataGridTextColumn Header="Contact No" Binding="{Binding Client.ClientContactNo}"/>
                     <DataGridTextColumn Header="StaffName" Binding="{Binding StaffName}"/>
-                    <DataGridTextColumn Header="Note" Binding="{Binding Note}"/>
-
-
-
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.HeaderTemplate>
                             <DataTemplate>
