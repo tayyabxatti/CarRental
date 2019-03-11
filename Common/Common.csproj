@@ -47,6 +47,7 @@
     <Compile Include="ViewModel\CarVM.cs" />
     <Compile Include="ViewModel\ClientVM.cs" />
     <Compile Include="ViewModel\DriverVM.cs" />
+    <Compile Include="ViewModel\ReservationVM.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
