@@ -1,4 +1,5 @@
 ﻿using ApplicationDb.DbLogic;
+using Common.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +37,7 @@ namespace CarRent.View
         }
         private void BtnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            int Id = (DriverGrid.SelectedItem as Driver).DriverId;
+            int Id = (DriverGrid.SelectedItem as DriverVM).Id;
             UpdateDriver updateDriver = new UpdateDriver(Id);
             updateDriver.ShowDialog();
 
@@ -44,11 +45,16 @@ namespace CarRent.View
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            int Id = (DriverGrid.SelectedItem as Driver).DriverId;
-            var deleteDriver = _db.Drivers.Where(c => c.DriverId == Id).SingleOrDefault();
-            _db.Drivers.Remove(deleteDriver);
-            _db.SaveChanges();
-            DriverGrid.ItemsSource = _db.Drivers.ToList();
+            int selectedId = (DriverGrid.SelectedItem as DriverVM).Id;
+            var responce = DriverLogic.Delete(new Common.ViewModel.DriverVM
+            {
+                Id = selectedId,
+
+            });
+            if (responce.IsCompleted == true)
+            {
+                DriverGrid.ItemsSource = DriverLogic.List().Object;
+            }
         }
 
         private void BtnInsert_Click(object sender, RoutedEventArgs e)

@@ -76,6 +76,7 @@
     </Compile>
     <Compile Include="DbLogic\BaseLogic.cs" />
     <Compile Include="DbLogic\CarLogic.cs" />
+    <Compile Include="DbLogic\ClientLogic.cs" />
     <Compile Include="DbLogic\DriverLogic.cs" />
     <Compile Include="Driver.cs">
       <DependentUpon>ApplicationDbContext.tt</DependentUpon>

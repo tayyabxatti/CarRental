@@ -86,5 +86,27 @@ namespace ApplicationDb.DbLogic
             }
             return response;
         }
+        public static Response<DriverVM> Delete(DriverVM driverVM)
+        {
+            Response<DriverVM> response = new Response<DriverVM>();
+            try
+            {
+                var deleteDriver = _db.Drivers.Where(c => c.Id == driverVM.Id).SingleOrDefault();
+                _db.Drivers.Remove(deleteDriver);
+                _db.SaveChanges();
+
+                
+                response.IsCompleted = true;
+                
+            }
+            catch(Exception ex)
+            {
+                response.IsCompleted = false;
+                response.Message = ex.Message;
+                response.Exception = ex;
+            }
+            return response;
+
+        }
     }
 }

@@ -15,11 +15,12 @@
             <DataGrid x:Name="ClientGrid" x:FieldModifier="public" IsReadOnly="True" AutoGenerateColumns="False"  Grid.Row="0" ColumnWidth="*">
                 <DataGrid.Columns>
 
-                    <DataGridTextColumn Header="ClientId" Binding="{Binding ClientId}"/>
-                    <DataGridTextColumn Header="ClientName" Binding="{Binding ClientName}"/>
-                    <DataGridTextColumn Header="ClientPickUpAddress" Binding="{Binding ClientPickUpAddress}"/>
-                    <DataGridTextColumn Header="ClientContactNo" Binding="{Binding ClientContactNo}"/>
-                    <DataGridTextColumn Header="ClientCompanyName" Binding="{Binding ClientCompanyName}"/>
+                    <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="Billing_Address" Binding="{Binding Billing_Address}"/>
+                    <DataGridTextColumn Header="Phone_Number" Binding="{Binding Phone_Number}"/>
+                    <DataGridTextColumn Header="Company_Name" Binding="{Binding Company_Name}"/>
+                    <DataGridTextColumn Header="Company_Contact_Numer" Binding="{Binding Company_Contact_Numer}"/>
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.HeaderTemplate>
                             <DataTemplate>

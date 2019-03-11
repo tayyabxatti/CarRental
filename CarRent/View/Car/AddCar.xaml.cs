@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ApplicationDb.DbLogic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,61 +29,21 @@ namespace CarRent.View
 
         private void BtnInsert_Click(object sender, RoutedEventArgs e)
         {
-            var totalKm = Int32.Parse(tbCarKmIn.Text) - Int32.Parse(tbCarKmOut.Text);
-            var totalTime = DateTime.Parse(tbTImeIn.Value.Value.ToLongTimeString()) - DateTime.Parse(tbTimeOut.Value.Value.ToLongTimeString());
-            string carowner = "";
-            if(cbCarOwnerOwn.IsChecked == true)
+            var responce = CarLogic.AddOrUpdate(new Common.ViewModel.CarVM
             {
-                carowner = cbCarOwnerOwn.Content.ToString();
-            }
-            else if (cbCarOwnerNonPool.IsChecked == true)
-            {
-                carowner = cbCarOwnerNonPool.Content.ToString();
-            }
-            else
-            {
-                carowner = cbCarOwnerInvestor.Content.ToString();
-            }
-            string fuelstate = "";
-            if (cbCarFuelStateFull.IsChecked == true)
-            {
-                fuelstate = cbCarFuelStateFull.Content.ToString();
-            }
-            else if(cbCarFuelStateHalf.IsChecked == true)
-            {
-                fuelstate = cbCarFuelStateHalf.Content.ToString();
-            }
-            else if(cbCarFuelStateQuarter.IsChecked== true)
-            {
-                fuelstate = cbCarFuelStateQuarter.Content.ToString();
-            }
-            else if (cbCarFuelStateEmpty.IsChecked == true)
-            {
-                fuelstate = cbCarFuelStateEmpty.Content.ToString();
-            }
+                Make = tbCarMake.Text,
+                Model = tbCompanyName.Text,
+                RegistrationNo = tbCarRegistrationNo.Text,
 
-
-            Car car = new Car()
+            });
+            if (responce.IsCompleted)
             {
-                CarKmIn = Int32.Parse(tbCarKmIn.Text),
-                CarKmOut = Int32.Parse(tbCarKmOut.Text),
-                CarMake = tbCarMake.Text,
-                CarRegistrationNo = tbCarRegistrationNo.Text,
-                DateIn = tbDateIn.SelectedDate.Value.ToShortDateString(),
-                DateOut = tbDateOut.SelectedDate.Value.ToShortDateString(),
-                KmBill = Int32.Parse(tbKmBill.Text),
-                TImeIn = tbTImeIn.Value.Value.ToShortTimeString(),
-                TimeOut = tbTimeOut.Value.Value.ToShortTimeString(),
-                TimeBill = Int32.Parse(tbTimeBill.Text),
-                TotalKm = totalKm,
-                TotalTime = Convert.ToInt16(totalTime.TotalHours),
-                CarFuelState = fuelstate,
-                CarOwner = carowner,
-            };
-            _db.Cars.Add(car);
-            _db.SaveChanges();
-            Vehicle.dataGrid.ItemsSource = _db.Cars.ToList();
-            this.Hide();
+                var listresponce = CarLogic.List();
+                if (listresponce.IsCompleted) { 
+                Vehicle.dataGrid.ItemsSource = listresponce.Object;
+                this.Hide();
+                }
+            }
 
         }
 

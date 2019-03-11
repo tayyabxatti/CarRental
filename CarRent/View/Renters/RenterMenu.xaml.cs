@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ApplicationDb.DbLogic;
+using Common.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,14 +31,14 @@ namespace CarRent.View.Renters
         }
         public void Load()
         {
-            ClientGrid.ItemsSource = _db.Clients.ToList();
+            ClientGrid.ItemsSource = ClientLogic.List().Object;
             dataGrid = ClientGrid;  
 
         }
 
         private void BtnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            int Id = (ClientGrid.SelectedItem as Client).ClientId;
+            int Id = (ClientGrid.SelectedItem as ClientVM).Id;
             UpdateRenter updateRenter = new UpdateRenter(Id);
             updateRenter.ShowDialog();
 
@@ -44,12 +46,15 @@ namespace CarRent.View.Renters
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            int Id = (ClientGrid.SelectedItem as Client).ClientId;
-            var deleteclient = _db.Clients.Where(c => c.ClientId == Id).SingleOrDefault();
-            _db.Clients.Remove(deleteclient);
-            _db.SaveChanges();
-            ClientGrid.ItemsSource = _db.Drivers.ToList();
-
+            int selectedId = (ClientGrid.SelectedItem as ClientVM).Id;
+            var responce = ClientLogic.Delete(new ClientVM
+            {
+                Id = selectedId,
+            });
+            if (responce.IsCompleted)
+            {
+                ClientGrid.ItemsSource = ClientLogic.List().Object;
+            }
         }
 
         private void BtnInsert_Click(object sender, RoutedEventArgs e)
